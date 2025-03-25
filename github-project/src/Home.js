@@ -5,7 +5,7 @@ import './App.css';
 
 function Home() {
   const [username, setUsername] = useState("");
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -18,16 +18,24 @@ function Home() {
     }
   }, []);
 
-  const fetchGitHubUser = async () => {
+  const fetchGitHubUsers = async () => {
     if (!username) return;
 
     try {
       setError(null);
-      const response = await axios.get(`https://api.github.com/users/${username}`);
-      setUserData(response.data);
+      const searchResponse = await axios.get(`https://api.github.com/search/users?q=${username}&per_page=5`);
+      
+      const users = await Promise.all(
+        searchResponse.data.items.map(async (user) => {
+          const userDetails = await axios.get(`https://api.github.com/users/${user.login}`);
+          return userDetails.data;
+        })
+      );
+
+      setUserData(users);
     } catch (err) {
-      setUserData(null);
-      setError("User not found! Try another username.");
+      setUserData([]);
+      setError("No users found! Try another search.");
     }
   };
 
@@ -43,17 +51,18 @@ function Home() {
       <header>
         <div className="left-section">
           <div className="logo">GitHunt</div>
-          {isAuthenticated && <button className="user-btn" onClick={handleLogout}>Log Out</button>}
-        </div>
+           <button className="users-btn" onClick={() => navigate('/users')}>Users</button>
+            {isAuthenticated && <button className="user-btn" onClick={handleLogout}>Log Out</button>}
+          </div>
         <div className="auth-buttons">
           {!isAuthenticated ? (
-            <>
-              <button className="signup-btn">Sign Up</button>
-              <button className="login-btn">Log In</button>
-            </>
-          ) : (
+          <>
+            <button className="signup-btn">Sign Up</button>
+            <button className="login-btn">Log In</button>
+          </>
+            ) : (
             <button className="logout-btn" onClick={handleLogout}>Log Out</button>
-          )}
+            )}
         </div>
       </header>
 
@@ -70,30 +79,36 @@ function Home() {
             placeholder="Search for a user..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && fetchGitHubUsers()}
           />
-          <button className="search-btn" onClick={fetchGitHubUser}>Search</button>
+          <button className="search-btn" onClick={fetchGitHubUsers}>Search</button>
         </div>
 
         {error && <p className="error">{error}</p>}
 
-        {userData && (
-          <div className="user-profile">
-            <img src={userData.avatar_url} alt="User Avatar" width="100" />
-            <h2>{userData.name || "No Name Provided"}</h2>
-            <p>Username: {userData.login}</p>
-            <p>{userData.bio || "No bio available"}</p>
-            <p>Public Repos: {userData.public_repos}</p>
-            <p>Followers: {userData.followers} | Following: {userData.following}</p>
-            <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-              View Profile
-            </a>
+        {/* Display for Users */}
+        {userData.length > 0 && (
+          <div className="user-list">
+            {userData.map((user) => (
+              <div key={user.id} className="user-profile">
+                <img src={user.avatar_url} alt="User Avatar" width="100" />
+                <h2>{user.name || "No Name Provided"}</h2>
+                <p>Username: {user.login}</p>
+                <p>{user.bio || "No bio available"}</p>
+                <p>Public Repos: {user.public_repos}</p>
+                <p>Followers: {user.followers} | Following: {user.following}</p>
+                <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                  View Profile
+                </a>
+              </div>
+            ))}
           </div>
         )}
       </main>
 
       {/* Video Section */}
       <section className="video-section">
-        <video className="background-video" autoplay loop muted>
+        <video className="background-video" autoPlay loop muted>
           <source src="project_video.mp4" type="video/mp4" />
         </video>
       </section>
