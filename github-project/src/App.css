@@ -1,3 +1,23 @@
+:root {
+  /* Default Color Schemes */
+  --primary-color: #3A5A40; /* Banner */
+  --white: #DAD7CD; /* light text, light-mode backgrounds */
+  --light-green: #A3B18A; /* backgrounds, primary contrast for darkmode */
+  --dark-font: #344E41;
+  --placeholder-font: #344e4180;  /* For text such as searchbar, input fields */
+  --button-color: #344E41CC;
+
+  /* Dark mode colors, use secondary-color for text */
+  --dark-primary-color: #1E2C20; /* Banner */
+  --dark-secondary-color: #344E41; /* backgrounds */
+  --dark-tertiary-color: #536C53; /* secondary contrast to darkmode */
+  --dark-button-color: #16201B;
+  --gray: #4A4841;
+  --light-gray: #75847CCC;
+}
+
+
+/* General Styling */
 .App {
   text-align: center;
 }
@@ -34,23 +54,30 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #a3b18a;
+  background-color: var(--light-green);
   padding: 0;
   box-sizing: border-box;
 }
 
+main {
+  flex-grow: 1;
+  text-align: center;
+  margin: 12vh 0;
+}
+
+/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #588157;
-  color: #dad7cd;
+  background-color: var(--primary-color);
+  color: var(--white);
   padding: 15px 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.left-section {
+header .left-section {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -59,55 +86,60 @@ header {
 .logo {
   font-size: 1.5em;
   font-weight: bold;
+  margin-right: 2vw;
 }
 
 .users-btn {
   background: none;
-  color: #dad7cd;
+  color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 1em;
-  border: 2px solid #dad7cd;
-  border-radius: 5px;
+  border: none;
+  font-size: 1.1em;
 }
 
 .users-btn:hover {
-  background: #dad7cd;
-  color: #588157;
+  background: var(--white);
+  color: var(--primary-color);
 }
 
 .home-btn {
   background: none;
-  color: #dad7cd;
+  color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
-  border: 2px solid #dad7cd;
-  border-radius: 5px;
-  font-size: 1em;
+  border: none;
+  font-size: 1.1em;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .home-btn:hover {
-  background: #dad7cd;
-  color: #588157;
+  background: var(--white);
+  color: var(--primary-color);
 }
 
 .auth-buttons {
   display: flex;
-  gap: 10px;
+  gap: 1.2vw;
 }
 
 .signup-btn, .login-btn {
   background: none;
-  color: #dad7cd;
+  border: none;
+  color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
-main {
-  flex-grow: 1;
-  text-align: center;
-  margin: 20px 0;
+/* Homepage styling */
+
+main .intro-text {
+  margin-bottom: 5vh;
+  font-size: 1.2em;
+  color: var(--dark-font);
+  font-weight: 700;
 }
 
 .search-container {
@@ -122,17 +154,17 @@ main {
   padding: 10px;
   font-size: 1em;
   width: 250px;
-  border: 2px solid black;
-  background-color: #dad7cd;
-  border-radius: 5px;
+  border: 2px solid var(--light-gray);
+  background-color: var(--white);
+  border-radius: 25px;
   margin-right: 10px;
 }
 
 .search-btn {
   padding: 10px 15px;
   font-size: 1em;
-  background-color: #588157;
-  color: #dad7cd;
+  background-color: var(--primary-color);
+  color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -147,7 +179,7 @@ main {
   width: 100%;
   height: 60vh;
   overflow: hidden;
-  background-color: #dad7cd;
+  background-color: var(--white);
 }
 
 .background-video {
@@ -159,22 +191,29 @@ main {
   height: 50%;
 }
 
+/* Footer Styling */
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #a3b18a;
+  background-color: var(--light-green);
   padding: 15px 20px;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
   bottom: 0;
+
+  color: var(--dark-font);
+  font-weight: 700;
 }
 
+/* Copyright Info */
 .footer-left {
   font-size: 0.9em;
 }
 
+/* Navigation Options */
 .footer-center {
   display: flex;
   gap: 15px;
@@ -182,11 +221,15 @@ footer {
 
 .about-btn, .contact-btn {
   background: none;
-  color: #dad7cd;
+  color: var(--dark-font);
+  font-weight: 900;
+  font-size: 1.2em;
   padding: 8px 12px;
+  border: none;
   cursor: pointer;
 }
 
+/* Darkmode toggle */
 .footer-right {
   display: flex;
   align-items: center;
@@ -212,7 +255,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #344e41;
+  background-color: var(--dark-font);
   transition: .4s;
   border-radius: 20px;
 }
@@ -224,26 +267,33 @@ footer {
   width: 14px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--white);
   transition: .4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #333;
+  background-color: var(--gray);
 }
 
 input:checked + .slider:before {
   transform: translateX(14px);
 }
 
+
+/* User page Styling */
 .user-profile {
   margin-top: 20px;
   padding: 20px;
-  background: #dad7cd;
-  color: #588157;
+  background: var(--white);
+  color: var(--primary-color);
   border-radius: 10px;
   text-align: center;
+}
+
+.random-user-title {
+  color: var(--dark-font);
+  font-size: 1.5em;
 }
 
 .user-profile img {
@@ -271,7 +321,7 @@ input:checked + .slider:before {
 
 .user-details a {
   margin-bottom: 10px;
-  color: #588157;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -280,8 +330,8 @@ input:checked + .slider:before {
 }
 
 .view-btn {
-  background-color: #588157;
-  color: #dad7cd;
+  background-color: var(--primary-color);
+  color: var(--white);
   padding: 8px 12px;
   border: none;
   border-radius: 5px;
@@ -294,8 +344,8 @@ input:checked + .slider:before {
 }
 
 .generate-btn {
-  background-color: #588157;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   padding: 10px 20px;
   border: none;
   cursor: pointer;
