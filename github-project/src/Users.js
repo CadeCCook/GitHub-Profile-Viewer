@@ -86,6 +86,15 @@ function Users() {
         <h2 id="random-user-title">Random GitHub Users</h2>
 
         <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
+        
+        <h3 className='users-displayed'>Show 
+          <select>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="20">20</option>
+          </select> at Once</h3>
 
         {error && <p className="error">{error}</p>}
 
@@ -94,13 +103,11 @@ function Users() {
           {randomUsers.length > 0 ? (
             randomUsers.map((user) => (
               <div key={user.id} className="user-profile">
-                <img src={user.avatar_url} alt="User Avatar" width="100" />
+                <img src={user.avatar_url} alt="User Avatar" />
                 <h3>{user.name || "No Name Provided"}</h3>
                 <div className="user-actions">
-                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                    View Profile
-                  </a>
                   <button onClick={() => navigate(`/profile/${user.login}`)}>View</button>
+                  <button onClick={() => window.open(user.html_url, '_blank')} rel="noopener noreferrer">GitHub</button>
                 </div>
               </div>
             ))

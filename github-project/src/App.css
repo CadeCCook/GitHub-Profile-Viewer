@@ -6,6 +6,7 @@
   --dark-font: #344E41;
   --placeholder-font: #344e4180;  /* For text such as searchbar, input fields */
   --button-color: #344E41CC;
+  --red: #BF8989;
 
   /* Dark mode colors, use secondary-color for text */
   --dark-primary-color: #1E2C20; /* Banner */
@@ -54,7 +55,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--light-green);
+  background-color: var(--white);
   padding: 0;
   box-sizing: border-box;
 }
@@ -63,6 +64,10 @@ main {
   flex-grow: 1;
   text-align: center;
   margin: 12vh 0;
+}
+
+.error {
+  color: var(--red);
 }
 
 /* Header Styling */
@@ -135,6 +140,10 @@ header .left-section {
 
 /* Homepage styling */
 
+.home-container {
+  background-color: var(--light-green);
+}
+
 main .intro-text {
   margin-bottom: 5vh;
   font-size: 1.2em;
@@ -148,25 +157,27 @@ main .intro-text {
   gap: 10px;
   align-items: center;
   padding: 10px;
+  
 }
 
 .search-input {
-  padding: 10px;
   font-size: 1em;
-  width: 250px;
   border: 2px solid var(--light-gray);
   background-color: var(--white);
   border-radius: 25px;
+  width: 50vw;
+  max-width: 800px;
+  padding: 10px;
   margin-right: 10px;
 }
 
 .search-btn {
-  padding: 10px 15px;
+  padding: 10px 28px;
   font-size: 1em;
   background-color: var(--primary-color);
   color: var(--white);
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -291,14 +302,44 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-.random-user-title {
+#random-user-title {
   color: var(--dark-font);
-  font-size: 1.5em;
+  font-size: 2.5em;
+  font-weight: 700;
 }
 
-.user-profile img {
-  border-radius: 50%;
-  margin-bottom: 10px;
+.generate-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.generate-btn:hover {
+  background-color: #4a6e4d;
+}
+
+.users-displayed {
+  color: var(--primary-color);
+}
+
+.users-displayed select {
+  margin: 0em .25em;
+  appearance: none;
+  background-color: var(--white);
+  cursor: pointer;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 1em;
+  font-weight: 700;
+  width: 2vw;
+  min-width: 25px;
+  max-width: 50px;
 }
 
 .user-list {
@@ -306,6 +347,18 @@ input:checked + .slider:before {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-top: 50px;
+}
+
+.user-profile {
+  border: 2px solid var(--light-gray);
+}
+
+.user-profile img {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid var(--red);
 }
 
 .user-details {
@@ -314,19 +367,29 @@ input:checked + .slider:before {
   align-items: center;
 }
 
-.user-details h3 {
+.user-details h3 { /* username */
   margin: 10px 0;
   font-size: 1.2em;
 }
 
-.user-details a {
-  margin-bottom: 10px;
-  color: var(--primary-color);
-  text-decoration: none;
+.user-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
-.user-details a:hover {
-  text-decoration: underline;
+.user-actions button {
+  cursor: pointer;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1em;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 20px;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 200px;
+  min-width: 50px;
 }
 
 .view-btn {
@@ -343,20 +406,7 @@ input:checked + .slider:before {
   background-color: #4a6f47;
 }
 
-.generate-btn {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-left: 20px;
-  border-radius: 5px;
-}
-
-.generate-btn:hover {
-  background-color: #4a6e4d;
-}
+/* User Profile Styling */
 
 .profile-container {
   text-align: center;
