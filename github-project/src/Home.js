@@ -51,53 +51,55 @@ function Home() {
     <div className='home-container'>
       <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
 
-      {/* Main Content */}
       <main>
-        <p className="intro-text">
-          The easiest way to find and view user profiles and statistics. <br />
-          Give it a try!
-        </p>
-        <div className="search-container">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search for a user..."
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && fetchGitHubUsers()}
-          />
-          <button className="search-btn" onClick={fetchGitHubUsers}>Search</button>
-        </div>
-
-        {error && <p className="error">{error}</p>}
-
-        {/* Display for Users */}
-        {userData.length > 0 && (
-          <div className="user-list">
-            {userData.map((user) => (
-              <div key={user.id} className="user-profile">
-                <img src={user.avatar_url} alt="User Avatar" width="100" />
-                <h2>{user.name || "No Name Provided"}</h2>
-                <p>Username: {user.login}</p>
-                <p>{user.bio || "No bio available"}</p>
-                <p>Public Repos: {user.public_repos}</p>
-                <p>Followers: {user.followers} | Following: {user.following}</p>
-                <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                  View Profile
-                </a>
-              </div>
-            ))}
+        <div className='top-content'>
+          <p className="intro-text">
+            The easiest way to find and view user profiles and statistics. <br />
+            Give it a try!
+          </p>
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search for a user..."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && fetchGitHubUsers()}
+            />
+            <button className="search-btn" onClick={fetchGitHubUsers}>Search</button>
           </div>
-        )}
+
+          {error && <p className="error">{error}</p>}
+          
+          {/* Display for Users */}
+          {userData.length > 0 && (
+            <div className="user-list">
+              {userData.map((user) => (
+                <div key={user.id} className="user-profile">
+                  <img src={user.avatar_url} alt="User Avatar" width="100" />
+                  <h2>{user.name || "No Name Provided"}</h2>
+                  <p>Username: {user.login}</p>
+                  <p>{user.bio || "No bio available"}</p>
+                  <p>Public Repos: {user.public_repos}</p>
+                  <p>Followers: {user.followers} | Following: {user.following}</p>
+                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                    View Profile
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      
+
+        <div className='bottom-content'>
+          <section className="video-section">
+            <video className="background-video" autoPlay loop muted>
+              <source src="project_video.mp4" type="video/mp4" />
+            </video>
+          </section>
+        </div>
       </main>
-
-      {/* Video Section */}
-      <section className="video-section">
-        <video className="background-video" autoPlay loop muted>
-          <source src="project_video.mp4" type="video/mp4" />
-        </video>
-      </section>
-
       <Footer />
     </div>
   );
