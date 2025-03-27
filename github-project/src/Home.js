@@ -98,20 +98,9 @@ function Home() {
         </video>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer-left">©2025 GitHunt. All Rights Reserved</div>
-        <div className="footer-center">
-            <button className="about-btn" onClick={() => navigate('/about')}>About Us</button>
-            <button className="contact-btn" onClick={() => navigate('/contact')}>Contact Us</button>
-        </div>
-        <div className="footer-right">
-          <label className="switch">
-            <input type="checkbox" id="darkModeToggle" />
-            <span className="slider round"></span>
-          </label>
-        </div>
-      </footer>
+      <Footer />
+
+
     </div>
   );
 }

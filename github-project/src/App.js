@@ -5,8 +5,9 @@ import Users from './Users';
 import Profile from './Profile';
 import { useNavigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import ContactUs from './contactUs'
+import ContactUs from './contactUs';
 import About from './About';
+
 
 function App() {
   
