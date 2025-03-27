@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function Home() {
   const [username, setUsername] = useState("");
@@ -47,24 +49,7 @@ function Home() {
 
   return (
     <div className='home-container'>
-      {/* Header */}
-      <header>
-        <div className="left-section">
-          <div className="logo">GitHunt</div>
-           <button className="users-btn" onClick={() => navigate('/users')}>Users</button>
-            {isAuthenticated && <button className="user-btn" onClick={handleLogout}>Log Out</button>}
-          </div>
-        <div className="auth-buttons">
-          {!isAuthenticated ? (
-          <>
-            <button className="signup-btn">Sign Up</button>
-            <button className="login-btn">Log In</button>
-          </>
-            ) : (
-            <button className="logout-btn" onClick={handleLogout}>Log Out</button>
-            )}
-        </div>
-      </header>
+      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
 
       {/* Main Content */}
       <main>
@@ -113,20 +98,7 @@ function Home() {
         </video>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer-left">©2025 GitHunt. All Rights Reserved</div>
-        <div className="footer-center">
-            <button className="about-btn" onClick={() => navigate('/about')}>About Us</button>
-            <button className="contact-btn">Contact Us</button>
-        </div>
-        <div className="footer-right">
-          <label className="switch">
-            <input type="checkbox" id="darkModeToggle" />
-            <span className="slider round"></span>
-          </label>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
