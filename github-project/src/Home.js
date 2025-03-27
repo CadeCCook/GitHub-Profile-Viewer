@@ -46,7 +46,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className='home-container'>
       {/* Header */}
       <header>
         <div className="left-section">
