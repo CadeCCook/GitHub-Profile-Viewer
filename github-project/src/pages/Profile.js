@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ContributionsBarChart from './ContributionsBarChart';
-import { fetchContributions, aggregateContributionsByMonth } from './githubService';
-import './App.css';
+import ContributionsBarChart from '../ContributionsBarChart';
+import { fetchContributions, aggregateContributionsByMonth } from '../githubService';
+import '../App.css';
 
 function Profile() {
   const { username } = useParams();

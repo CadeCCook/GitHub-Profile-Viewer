@@ -1,9 +1,24 @@
-import react from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const Header = ({isAuthenticated, handleLogout}) => {
+const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Check for token in local storage
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+          setIsAuthenticated(true);
+        }
+      }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        setIsAuthenticated(false);
+        navigate('/');
+    };
 
     const handleToggle = () => {
         if (location.pathname === '/') {
@@ -25,6 +40,7 @@ const Header = ({isAuthenticated, handleLogout}) => {
 
                 {isAuthenticated && <button className="user-btn" onClick={handleLogout}>Log Out</button>}
             </div>
+
             <div className="auth-buttons">
                 {!isAuthenticated ? (
                 <>
@@ -32,7 +48,7 @@ const Header = ({isAuthenticated, handleLogout}) => {
                     <button className="login-btn">Log In</button>
                 </>
                 ) : (
-                <button className="logout-btn" onClick={handleLogout}>Log Out</button>
+                    <button className="logout-btn" onClick={handleLogout}>Log Out</button>
                 )}
             </div>
         </header>
