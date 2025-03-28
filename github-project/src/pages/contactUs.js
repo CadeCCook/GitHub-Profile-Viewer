@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function ContactUs() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +14,8 @@ function ContactUs() {
   };
 
   return (
-    <div className="contact-page">
+    <div className="contact-container">
+      <Header />
       {!submitted ? (
         <form className="contact-form" onSubmit={handleSubmit}>
           <h2>Contact Us</h2>
@@ -28,6 +31,7 @@ function ContactUs() {
           <button onClick={() => navigate('/')}>Back to Home</button>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

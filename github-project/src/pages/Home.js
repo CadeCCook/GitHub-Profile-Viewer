@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,17 +8,8 @@ function Home() {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState([]);
   const [error, setError] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
+  // Collect Github user data for search
   const fetchGitHubUsers = async () => {
     if (!username) return;
 
@@ -41,15 +31,9 @@ function Home() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    setIsAuthenticated(false);
-    navigate('/');
-  };
-
   return (
     <div className='home-container'>
-      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+      <Header />
 
       <main>
         <div className='top-content'>
@@ -79,7 +63,7 @@ function Home() {
                   <img src={user.avatar_url} alt="User Avatar" width="100" />
                   <h2>{user.name || "No Name Provided"}</h2>
                   <p>Username: {user.login}</p>
-                  <p>{user.bio || "No bio available"}</p>
+                  <p>{user.bio || "No bio info available"}</p>
                   <p>Public Repos: {user.public_repos}</p>
                   <p>Followers: {user.followers} | Following: {user.following}</p>
                   <a href={user.html_url} target="_blank" rel="noopener noreferrer">
@@ -90,7 +74,6 @@ function Home() {
             </div>
           )}
         </div>
-      
 
         <div className='bottom-content'>
           <section className="video-section">
@@ -100,9 +83,8 @@ function Home() {
           </section>
         </div>
       </main>
+
       <Footer />
-
-
     </div>
   );
 }
