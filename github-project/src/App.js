@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Users from './Users';
-import Profile from './Profile';
+import Home from './pages/Home';
+import Users from './pages/Users';
+import Profile from './pages/Profile';
 import { useNavigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import ContactUs from './contactUs';
-import About from './About';
+import ContactUs from './pages/contactUs';
+import About from './pages/About';
 
 
 function App() {

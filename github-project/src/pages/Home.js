@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import '../App.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Home() {
   const [username, setUsername] = useState("");
