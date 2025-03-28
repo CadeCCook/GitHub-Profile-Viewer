@@ -3,6 +3,7 @@ import axios from "axios";
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import UserCard from '../components/UserCard';
 
 function Home() {
   const [username, setUsername] = useState("");
@@ -54,22 +55,17 @@ function Home() {
           </div>
 
           {error && <p className="error">{error}</p>}
-          
+        </div>
+
+        <div className='middle-content'>
           {/* Display for Users */}
           {userData.length > 0 && (
             <div className="user-list">
               {userData.map((user) => (
-                <div key={user.id} className="user-profile">
-                  <img src={user.avatar_url} alt="User Avatar" width="100" />
-                  <h2>{user.name || "No Name Provided"}</h2>
-                  <p>Username: {user.login}</p>
-                  <p>{user.bio || "No bio info available"}</p>
-                  <p>Public Repos: {user.public_repos}</p>
-                  <p>Followers: {user.followers} | Following: {user.following}</p>
-                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                    View Profile
-                  </a>
-                </div>
+                <UserCard 
+                  user={user} 
+                  compact={false}
+                />
               ))}
             </div>
           )}

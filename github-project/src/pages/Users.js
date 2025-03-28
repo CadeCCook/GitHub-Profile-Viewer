@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import UserCard from '../components/UserCard';
 
 function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
@@ -87,14 +88,12 @@ function Users() {
         <div className="user-list">
           {randomUsers.length > 0 ? (
             randomUsers.map((user) => (
-              <div key={user.id} className="user-profile">
-                <img src={user.avatar_url} alt="User Avatar" />
-                <h3>{user.name || "No Name Provided"}</h3>
-                <div className="user-actions">
-                  <button onClick={() => navigate(`/profile/${user.login}`)}>View</button>
-                  <button onClick={() => window.open(user.html_url, '_blank')} rel="noopener noreferrer">GitHub</button>
-                </div>
-              </div>
+              user && (
+                <UserCard  
+                  user={user} 
+                  compact={true}
+                />
+              )
             ))
           ) : (
             <p>Loading users...</p>
