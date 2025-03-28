@@ -89,7 +89,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  padding: 1vw 1vh;
+  padding: 1vh .5vw;
   min-width: 80px;
   align-self: center;
 }
