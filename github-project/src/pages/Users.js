@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { ProfileButton, GitHubButton } from '../components/CustomButton';
 
 function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
@@ -91,8 +92,8 @@ function Users() {
                 <img src={user.avatar_url} alt="User Avatar" />
                 <h3>{user.name || "No Name Provided"}</h3>
                 <div className="user-actions">
-                  <button onClick={() => navigate(`/profile/${user.login}`)}>View</button>
-                  <button onClick={() => window.open(user.html_url, '_blank')} rel="noopener noreferrer">GitHub</button>
+                  <ProfileButton username={user.login} />
+                  <GitHubButton url={user.html_url} />
                 </div>
               </div>
             ))

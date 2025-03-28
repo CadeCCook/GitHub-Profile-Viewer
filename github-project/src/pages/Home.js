@@ -3,6 +3,7 @@ import axios from "axios";
 import '../App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import {ProfileButton, GitHubButton} from '../components/CustomButton';
 
 function Home() {
   const [username, setUsername] = useState("");
@@ -61,14 +62,12 @@ function Home() {
               {userData.map((user) => (
                 <div key={user.id} className="user-profile">
                   <img src={user.avatar_url} alt="User Avatar" width="100" />
-                  <h2>{user.name || "No Name Provided"}</h2>
-                  <p>Username: {user.login}</p>
+                  <h2>{user.login || "No Name Provided"}</h2>
                   <p>{user.bio || "No bio info available"}</p>
                   <p>Public Repos: {user.public_repos}</p>
                   <p>Followers: {user.followers} | Following: {user.following}</p>
-                  <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-                    View Profile
-                  </a>
+                  <ProfileButton username={user.login} />
+                  <GitHubButton url={user.html_url} />
                 </div>
               ))}
             </div>
