@@ -55,7 +55,9 @@ function Home() {
           </div>
 
           {error && <p className="error">{error}</p>}
-          
+        </div>
+
+        <div className='middle-content'>
           {/* Display for Users */}
           {userData.length > 0 && (
             <div className="user-list">
