@@ -88,11 +88,19 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  padding: 1vh 0;
+  padding: 1vw 1vh;
+  min-width: 80px;
   align-self: center;
 }
 button:hover {
   background-color: var(--light-green);
+}
+
+.user-actions { /* container for Profile/GitHub button groups */
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 input, textarea {
@@ -497,26 +505,6 @@ body.dark-mode .users-displayed select {
 .user-details h3 { /* username */
   margin: 10px 0;
   font-size: 1.2em;
-}
-
-.user-actions {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.user-actions button {
-  cursor: pointer;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1em;
-  background-color: var(--button-color);
-  border: none;
-  border-radius: 20px;
-  padding: 20px 40px;
-  width: 100%;
-  max-width: 200px;
-  min-width: 50px;
 }
 
 .view-btn {
