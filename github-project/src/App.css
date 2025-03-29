@@ -20,7 +20,7 @@
   --light-gray: #75847CCC;
 }
 
-/* General Styling */
+/*** General Styling ***/
 * {
   margin: 0;
   padding: 0;
@@ -112,6 +112,15 @@ label {
   font-size: larger;
 }
 
+main {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.error {
+  color: var(--red);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -132,24 +141,21 @@ label {
   border-radius: 10px; 
 }
 
-main {
-  flex-grow: 1;
-  text-align: center;
-}
-
-.error {
-  color: var(--red);
-}
-
 /* Dark Mode Styling */
 body.dark-mode {
   background-color: var(--dark-secondary-color);
   color: var(--white);
 }
 
-body.dark-mode a {
+body.dark-mode h2, p, a{
   color: var(--white);
 }
+
+body.dark-mode input, body.dark-mode textarea {
+  background-color: inherit;
+  border-color: var(--dark-button-color);
+}
+
 body.dark-mode a:hover {
   color: var(--dark-tertiary-color);
 }
