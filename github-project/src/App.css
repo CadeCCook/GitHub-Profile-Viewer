@@ -28,37 +28,21 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: var(--dark-font);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   background-color: var(--white);
-  padding: 0;
+  color: var(--dark-font);
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
-h2 {
+h2 { /* For Page titles */
   font-size: 3em;
   font-weight: 700;
   margin: 1.5em 0;
+  color: var(--dark-font);
+  text-align: center;
 }
 
 h3 {
@@ -89,7 +73,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  padding: 1vw 1vh;
+  padding: 1vh .5vw;
   min-width: 80px;
   align-self: center;
 }
@@ -97,8 +81,23 @@ button:hover {
   background-color: var(--light-green);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 5px;
+  border-radius: 10px;
+  width: 50vw;
+  max-width: 750px;
+  color: var(--primary-color);
+}
+
 input, textarea {
+  margin: 1vh 0;
   padding: 1vh 1vw;
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 textarea {
@@ -190,7 +189,7 @@ body.dark-mode ::placeholder {
   justify-content: space-between;
 }
 .user-profile h3 {
-  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
   margin: .5vh 0;
   width: 100%;
   text-overflow: ellipsis;
@@ -227,6 +226,7 @@ body.dark-mode ::placeholder {
   display: flex;
   justify-content: center;
   gap: 8px;
+  align-items: center;
 }
 
 body.dark-mode .user-profile {
@@ -485,12 +485,6 @@ input:checked + .slider:before {
 
 
 /* User page Styling */
-#random-user-title {
-  margin: 2vh 0;
-  color: var(--dark-font);
-  font-size: 2.5em;
-  font-weight: 700;
-}
 
 .generate-btn {
   background-color: var(--primary-color);
@@ -518,6 +512,7 @@ input:checked + .slider:before {
   background-color: var(--white);
   cursor: pointer;
   border: 2px solid var(--primary-color);
+  border-radius: 5px;
   color: var(--primary-color);
   text-align: center;
   font-size: 1em;
@@ -689,17 +684,6 @@ body.dark-mode .users-displayed select {
   background-color: inherit;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 30px;
-  border-radius: 10px;
-  width: 50vw;
-  max-width: 750px;
-  color: var(--primary-color);
-}
-
 #contact-submit-btn {
   width:20%;
   border-radius: 17px;
@@ -744,3 +728,18 @@ body.dark-mode .users-displayed select {
   margin: 0 5vw;
   font-size: 1.2em;
 }
+
+/* Login/Signup Page Styling */
+.checkbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.account-redirect {
+  text-align: center;
+  margin-top: 20px;
+  align-self: center;
+}
+

@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import {LoginButton, SignUpButton} from './CustomButton';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -44,8 +45,8 @@ const Header = () => {
             <div className="auth-buttons">
                 {!isAuthenticated ? (
                 <>
-                    <button className="signup-btn">Sign Up</button>
-                    <button className="login-btn">Log In</button>
+                    <SignUpButton />
+                    <LoginButton />
                 </>
                 ) : (
                     <button className="logout-btn" onClick={handleLogout}>Log Out</button>
