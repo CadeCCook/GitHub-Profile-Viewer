@@ -522,12 +522,17 @@ input:checked + .slider:before {
 }
 
 .contact-page {
+  background-color: #dad7cd;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.contact-page main {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  min-height: 80vh;
-  background-color: #dad7cd;
+  flex-grow: 1;
 }
 
 .contact-form {
