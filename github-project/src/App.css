@@ -583,6 +583,11 @@ body.dark-mode .users-displayed select {
   flex-grow: 1;
 }
 
+body.dark-mode .profile-container {
+  background-color: var(--dark-secondary-color);
+}
+
+
 .profile-title {
   grid-column: 1 / 4;
 }
@@ -626,6 +631,10 @@ body.dark-mode .users-displayed select {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .chart-container {
+  background-color: var(--dark-secondary-color);
 }
 
 .chart-container svg {
