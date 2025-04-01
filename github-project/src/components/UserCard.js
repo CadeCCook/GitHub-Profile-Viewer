@@ -6,7 +6,7 @@ const UserCard = ({ user, variant = "default" }) => {
         return <div className="user-list">Loading..</div>
     }
 
-    const stats = [
+    const detailedStats = [
         { label: "Company:", value: user.company },
         { label: "Location:", value: user.location },
         { label: "Blog:", value: user.blog },
@@ -39,7 +39,7 @@ const UserCard = ({ user, variant = "default" }) => {
                                 <>
                                     <p>Public Repos: {user.public_repos}</p>
                                     <p>Followers: {user.followers} | Following: {user.following}</p>
-                                    {stats
+                                    {detailedStats
                                         .filter(stat => stat.value)
                                         .map((stat, index) => (
                                             <p key={index}>{stat.label} {stat.value}</p>
