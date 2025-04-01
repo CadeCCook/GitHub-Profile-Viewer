@@ -33,12 +33,13 @@ body {
   flex-direction: column;
   background-color: var(--white);
   color: var(--dark-font);
+  font-size: 1rem;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
 h2 { /* For Page titles */
-  font-size: 3em;
+  font-size: clamp(1.4rem, calc(5vw + 1rem), 4rem);
   font-weight: 700;
   margin: 1.5em 0;
   color: var(--dark-font);
@@ -46,13 +47,12 @@ h2 { /* For Page titles */
 }
 
 h3 {
-  font-size: 2em;
+  font-size: clamp(1.2rem, 3vw, 2rem);
   font-weight: 700;
-  margin: 1.5em 0;
 }
 
 h4 {
-  font-size: 1.2em;
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
   font-style: italic;
   margin-bottom: 3vh;
 }
@@ -192,7 +192,7 @@ body.dark-mode ::placeholder {
   max-width: 200px;
   max-height: 300px;
   margin-top: 20px;
-  padding: 20px;
+  padding: .5rem 1rem;
   border-radius: 10px;
   text-align: center;
   display: flex;
@@ -201,15 +201,14 @@ body.dark-mode ::placeholder {
 }
 .user-profile h3 {
   font-size: clamp(1.2rem, 2vw, 1.4rem);
-  margin: .5vh 0;
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: .5vh;
+  padding-bottom: .5rem;
 }
 .user-profile p {
-  font-size: 0.8em;
+  font-size: clamp(0.6rem, .75vw, 0.8rem);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -227,13 +226,12 @@ body.dark-mode ::placeholder {
 }
 
 .user-info {
-  flex-grow: 1;
   overflow-y: auto;
-
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .user-actions { /* container for Profile/GitHub button groups */
-  margin-top: 1vh;
   display: flex;
   justify-content: center;
   gap: 8px;
@@ -241,15 +239,13 @@ body.dark-mode ::placeholder {
 }
 
 .has-bio {
-  margin-bottom: 1rem;
+  margin: .5rem 0 1rem;
 }
 
 body.dark-mode .user-profile {
   background: var(--dark-secondary-color);
   color: var(--white);
 }
-
-
 
 header, footer {
   flex-shrink: 0;
@@ -283,7 +279,6 @@ header .left-section {
 .logo {
   font-size: 1.5em;
   font-weight: bold;
-  cursor: pointer;
   margin-right: 2vw;
 }
 
@@ -543,10 +538,6 @@ input:checked + .slider:before {
   max-width: 50px;
 }
 
-body.dark-mode #random-user-title {
-  color: var(--white);
-}
-
 body.dark-mode .users-displayed {
   color: var(--white);
 }
@@ -561,11 +552,6 @@ body.dark-mode .users-displayed select {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.user-details h3 { /* username */
-  margin: 10px 0;
-  font-size: 1.2em;
 }
 
 .view-btn {
@@ -615,6 +601,11 @@ body.dark-mode .users-displayed select {
   grid-area: 2 / 2 / 4 / 4; /* RS, CS, RE, CE */
   margin-right: 3rem;
 }
+
+.statistic-dropdown {
+  justify-self: center;
+}
+
 
 .back-btn {
   margin-top: 20px;
