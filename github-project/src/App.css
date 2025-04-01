@@ -607,6 +607,10 @@ body.dark-mode .profile-container {
   margin-right: 3rem;
 }
 
+body.dark-mode .contribution-container {
+  background-color: var(--dark-secondary-color);
+}
+
 .statistic-dropdown {
   justify-self: center;
 }
