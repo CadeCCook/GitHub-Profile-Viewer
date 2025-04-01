@@ -15,7 +15,7 @@ function Signup() {
                 <label htmlFor="confirm-password">Confirm Password</label>
                 <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password..." />
                 <label htmlFor="email">Email (optional)</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email..." />
+                <input type="email" id="email" name="email" placeholder="Enter your email..." />
                 <button type="submit">Sign Up</button>
                 <p className='account-redirect'>Already have an account? <a href="login">Login</a></p>
             </form>

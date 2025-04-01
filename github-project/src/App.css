@@ -57,6 +57,10 @@ h4 {
   margin-bottom: 3vh;
 }
 
+p {
+  color: var(--dark-font);
+}
+
 a {
   font-style: italic;
   color: var(--primary-color);
@@ -147,7 +151,9 @@ body.dark-mode {
   color: var(--white);
 }
 
-body.dark-mode h2, p, a{
+body.dark-mode h2, 
+body.dark-mode p, 
+body.dark-mode a{
   color: var(--white);
 }
 
@@ -238,6 +244,12 @@ body.dark-mode ::placeholder {
 body.dark-mode .user-profile {
   background: var(--dark-secondary-color);
   color: var(--white);
+}
+
+
+
+header, footer {
+  flex-shrink: 0;
 }
 
 /* Header Styling */
@@ -569,73 +581,40 @@ body.dark-mode .users-displayed select {
 
 /* User Profile Styling */
 
-.profile-container {
-  text-align: center;
-  padding: 20px;
-}
-
-.profile-card {
-  background: #1e1e1e;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  text-align: center;
-  max-width: 400px;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-}
-
-.profile-avatar {
-  width: 120px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.profile-link {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: neon;
-  color: black;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.profile-link:hover {
-  background: lightgreen;
+.container {
+  min-height: 100vh;
+  height: 100%;
 }
 
 .profile-container {
-  text-align: center;
-  padding: 20px;
-  background-color: #121212;
-  color: #fff;
-  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .25fr 1fr .75fr;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.profile-title {
+  grid-column: 1 / 4;
 }
 
 .profile-info {
-  margin: 20px auto;
-  padding: 10px;
-  max-width: 400px;
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  grid-row-start: 2;
 }
 
-.profile-info img {
-  border-radius: 50%;
-  margin-bottom: 10px;
+.statistic-dropdown {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  margin: 20px;
 }
 
-.profile-info a {
-  color: #4fc3f7;
-  text-decoration: none;
-  font-weight: bold;
+.contribution-container {
+  grid-area: 2 / 2 / 4 /4 /* RS, CS, RE, CE */
 }
 
-.profile-info a:hover {
-  text-decoration: underline;
-}
+
+
+
 
 .back-btn {
   margin-top: 20px;
@@ -672,14 +651,7 @@ body.dark-mode .users-displayed select {
   margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 /* Contact Page Styling*/
 .contact-container {
