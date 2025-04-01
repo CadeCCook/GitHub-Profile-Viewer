@@ -185,7 +185,6 @@ body.dark-mode ::placeholder {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-top: 50px;
 }
 
 .user-profile {
@@ -239,6 +238,10 @@ body.dark-mode ::placeholder {
   justify-content: center;
   gap: 8px;
   align-items: center;
+}
+
+.has-bio {
+  margin-bottom: 1rem;
 }
 
 body.dark-mode .user-profile {
@@ -609,12 +612,9 @@ body.dark-mode .users-displayed select {
 }
 
 .contribution-container {
-  grid-area: 2 / 2 / 4 /4 /* RS, CS, RE, CE */
+  grid-area: 2 / 2 / 4 / 4; /* RS, CS, RE, CE */
+  margin-right: 3rem;
 }
-
-
-
-
 
 .back-btn {
   margin-top: 20px;

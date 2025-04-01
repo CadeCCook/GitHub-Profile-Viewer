@@ -64,7 +64,7 @@ function Home() {
               {userData.map((user) => (
                 <UserCard 
                   user={user} 
-                  compact={false}
+                  variant='compact'
                 />
               ))}
             </div>

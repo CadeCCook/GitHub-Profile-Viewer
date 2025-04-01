@@ -17,18 +17,18 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       const token = process.env.REACT_APP_GITHUB_TOKEN;
-      console.log('Token', token);
 
       try {
         const userResponse = await fetch(`https://api.github.com/users/${username}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(userResponse);
 
-        const rateLimitResponse = await fetch('https://api.github.com/rate_limit', {
+        /*const rateLimitResponse = await fetch('https://api.github.com/rate_limit', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const rateData = await rateLimitResponse.json();
-        console.log('Rate Limit:', rateData);
+        console.log('Rate Limit:', rateData);*/
 
         if(!userResponse.ok) {
           const errorText = await userResponse.text();
@@ -61,7 +61,7 @@ function Profile() {
           <h2>Statistics</h2>
         </div>
         <div className='profile-info'>
-          <UserCard user={userInfo} />
+          <UserCard user={userInfo} variant='detailed' />
         </div>
         <div className='statistic-dropdown'>
           <p>test</p>
