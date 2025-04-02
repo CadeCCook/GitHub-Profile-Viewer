@@ -64,7 +64,10 @@ function Profile() {
           <UserCard user={userInfo} variant='detailed' />
         </div>
         <div className='statistic-dropdown'>
-          <p>test</p>
+            <select>
+            <option value="Monthly Activity">Monthly Activity</option>
+            <option value="Repository Contributions">Repository Contributions</option>
+          </select>
         </div>
         
         <div className='contribution-container'>
