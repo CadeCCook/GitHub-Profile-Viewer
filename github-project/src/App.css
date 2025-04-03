@@ -357,6 +357,7 @@ body.dark-mode footer {
 
 /* Navigation Options */
 .footer-center {
+  justify-content: center;
   flex: 1;
   text-align: center;
   display: flex;
