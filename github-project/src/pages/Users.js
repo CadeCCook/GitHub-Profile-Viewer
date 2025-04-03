@@ -69,7 +69,7 @@ function Users() {
 
       {/* Main Content */}
       <main>
-        <h2 id="random-user-title">Random GitHub Users</h2>
+        <h2>Random GitHub Users</h2>
 
         <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
         

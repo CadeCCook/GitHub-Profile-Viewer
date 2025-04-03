@@ -14,7 +14,7 @@ const UserCard = ({ user, variant = "default" }) => {
     ];
     
     return (
-       <div className={`user-list user-card-${variant}`}>
+       <div className={`user-card user-card-${variant}`}>
             <div className="user-profile">
                 <img src={user?.avatar_url || '/default-avatar.png'} alt="User Avatar" />
                 <h3>{user.login || "No Name Provided"}</h3>
