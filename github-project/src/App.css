@@ -631,6 +631,11 @@ body.dark-mode .chart-container {
   fill: white !important;
 }
 
+.language-pie-chart {
+  margin: 20px auto;
+  text-align: center;
+}
+
 .error {
   color: red;
   margin-top: 10px;

@@ -10,7 +10,6 @@ function Home() {
   const [userData, setUserData] = useState([]);
   const [error, setError] = useState(null);
 
-  // Collect Github user data for search
   const fetchGitHubUsers = async () => {
     if (!username) return;
 
@@ -58,11 +57,11 @@ function Home() {
         </div>
 
         <div className='middle-content'>
-          {/* Display for Users */}
           {userData.length > 0 && (
             <div className="user-list">
               {userData.map((user) => (
                 <UserCard 
+                  key={user.id}
                   user={user} 
                   variant='compact'
                 />

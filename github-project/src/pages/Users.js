@@ -10,6 +10,7 @@ function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userCount, setUserCount] = useState(4);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,12 +25,10 @@ function Users() {
     try {
       setError(null);
 
-      // Fetch users
       const searchResponse = await axios.get('https://api.github.com/search/users?q=user&per_page=50');
 
-      // Pick 4 random users from the search results
       const randomUsers = [];
-      while (randomUsers.length < 4) {
+      while (randomUsers.length < userCount) {
         const randomIndex = Math.floor(Math.random() * searchResponse.data.items.length);
         const randomUser = searchResponse.data.items[randomIndex];
 
@@ -38,7 +37,6 @@ function Users() {
         }
       }
 
-      // Fetch full details of the random users
       const users = await Promise.all(
         randomUsers.map(async (user) => {
           const userDetails = await axios.get(user.url);
@@ -59,9 +57,13 @@ function Users() {
     navigate('/');
   };
 
+  const handleUserCountChange = (e) => {
+    setUserCount(parseInt(e.target.value));
+  };
+
   useEffect(() => {
     generateRandomUsers();
-  }, []);
+  }, [userCount]);
 
   return (
     <div>
@@ -74,7 +76,7 @@ function Users() {
         <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
         
         <h3 className='users-displayed'>Show 
-          <select>
+          <select value={userCount} onChange={handleUserCountChange}>
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="12">12</option>
@@ -90,6 +92,7 @@ function Users() {
             randomUsers.map((user) => (
               user && (
                 <UserCard  
+                  key={user.id}
                   user={user} 
                   compact={true}
                 />
