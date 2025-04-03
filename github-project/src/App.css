@@ -35,6 +35,11 @@ body {
   box-sizing: border-box;
 }
 
+body.dark-mode {
+  background-color: var(--green-dark);
+  color: var(--white);
+}
+
 h2 { /* For Page titles */
   font-size: clamp(1.4rem, calc(2vw + 1rem), 4rem);
   font-weight: 700;
@@ -62,6 +67,16 @@ a:hover {
   color: var(--green-darker);
 }
 
+body.dark-mode h2, 
+body.dark-mode p, 
+body.dark-mode a{
+  color: var(--white);
+}
+
+body.dark-mode a:hover {
+  color: var(--lime);
+}
+
 button {
   font-weight: 700;
   color: var(--white);
@@ -79,6 +94,10 @@ button:hover {
   border: 1px solid var(--green);
 }
 
+body.dark-mode button {
+  background-color: var(--green-darkest-80);
+  color: var(--white);
+}
 
 form {
   display: flex;
@@ -106,9 +125,24 @@ textarea {
   box-sizing: border-box;
 }
 
+body.dark-mode input, 
+body.dark-mode textarea {
+  background-color: inherit;
+  border-color: var(--green-darker);
+}
+
 label {
   font-weight: 700;
   font-size: larger;
+}
+
+body.dark-mode label,
+body.dark-mode input, 
+body.dark-mode textarea {
+  color: var(--white);
+}
+body.dark-mode ::placeholder {
+  color: var(--white-50);
 }
 
 main {
@@ -140,36 +174,6 @@ main {
   border-radius: 10px; 
 }
 
-/* Dark Mode Styling */
-body.dark-mode {
-  background-color: var(--green-dark);
-  color: var(--white);
-}
-
-body.dark-mode h2, 
-body.dark-mode p, 
-body.dark-mode a{
-  color: var(--white);
-}
-
-body.dark-mode input, body.dark-mode textarea {
-  background-color: inherit;
-  border-color: var(--green-darker);
-}
-
-body.dark-mode a:hover {
-  color: var(--lime);
-}
-
-body.dark-mode label,
-body.dark-mode input, 
-body.dark-mode textarea {
-  color: var(--white);
-}
-body.dark-mode ::placeholder {
-  color: var(--white-50);
-}
-
 /*** Component Styling ***/
 /* UserCard */
 .user-list {
@@ -196,6 +200,12 @@ body.dark-mode ::placeholder {
   flex-direction: column;
   justify-content: space-between;
 }
+
+body.dark-mode .user-profile {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
 .user-profile h3 {
   font-size: clamp(1.2rem, 2vw, 1.4rem);
   width: 100%;
@@ -204,6 +214,7 @@ body.dark-mode ::placeholder {
   white-space: nowrap;
   padding-bottom: .5rem;
 }
+
 .user-profile p {
   font-size: clamp(0.6rem, .75vw, 0.8rem);
   display: -webkit-box;
@@ -240,10 +251,7 @@ body.dark-mode ::placeholder {
   margin: .5rem 0 1rem;
 }
 
-body.dark-mode .user-profile {
-  background: var(--green-dark);
-  color: var(--white);
-}
+
 
 header, footer {
   flex-shrink: 0;
@@ -372,10 +380,7 @@ body.dark-mode footer {
 body.dark-mode .top-content {
   background-color: #536C53;
 }
-  body.dark-mode button {
-  background-color: var(--green-darkest-80);
-  color: var(--white);
-}
+  
 body.dark-mode .search-input {
   background-color: var(--gray);
   color: var(--white);
