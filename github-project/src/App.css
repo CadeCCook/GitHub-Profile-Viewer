@@ -375,6 +375,10 @@ body.dark-mode footer {
 }
 
 /* Homepage styling */
+.loading-users {
+  margin: 2vh 0;
+}
+
 .top-content {
   margin-top: 0;
   padding: 5vh 0;
@@ -494,7 +498,6 @@ input:checked + .slider:before {
 
 
 /* User page Styling */
-
 .generate-btn {
   background-color: var(--green);
   font-size: 1rem;
@@ -549,7 +552,6 @@ body.dark-mode .users-displayed select {
 }
 
 /* User Profile Styling */
-
 .container {
   min-height: 100vh;
   height: 100%;

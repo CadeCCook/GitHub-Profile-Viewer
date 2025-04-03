@@ -8,6 +8,7 @@ import UserCard from '../components/UserCard';
 
 function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function Users() {
   const generateRandomUsers = async () => {
     try {
       setError(null);
+      setLoading(true);
 
       // Fetch users
       const searchResponse = await axios.get('https://api.github.com/search/users?q=user&per_page=50');
@@ -50,6 +52,8 @@ function Users() {
     } catch (err) {
       setRandomUsers([]);
       setError("Error fetching random users.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,22 +86,19 @@ function Users() {
             <option value="20">20</option>
           </select> at Once</h3>
 
-        {error && <p className="error">{error}</p>}
+        {error && !loading && <p className="error">{error}</p>}
 
         {/* Display Random Users */}
         <div className="user-list">
-          {randomUsers.length > 0 ? (
+          {loading ? (
+            <p className='loading-users'>Loading users...</p>
+          ) : randomUsers.length > 0 ? (
             randomUsers.map((user) => (
-              user && (
-                <UserCard  
-                  user={user} 
-                  compact={true}
-                />
-              )
-            ))
-          ) : (
-            <p>Loading users...</p>
-          )}
+              user && <UserCard user={user} variant='compact' />
+          ))
+            ) : (
+              !error && <p>No Users Found.</p>
+            )}
         </div>
       </main>
       <Footer />
