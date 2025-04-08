@@ -70,7 +70,7 @@ function Users() {
       <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
 
       {/* Main Content */}
-      <main>
+      <main style={{ paddingBottom: '100px' }}>
         <h2>Random GitHub Users</h2>
 
         <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
