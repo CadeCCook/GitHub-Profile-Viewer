@@ -6,6 +6,7 @@
   --green-dark: #344E41;
   --green-dark-80: #344E41CC;
   --green-darker: #1E2C20;
+  --green-darker-80: #1E2C20CC;
   --green-darkest: #18211A;
   --green-darkest-80: #18211ACC;
   --white: #DAD7CD; 
@@ -81,13 +82,14 @@ button {
   font-weight: 700;
   color: var(--white);
   background-color: var(--green-dark-80);
-  border: none;
+  border: 1px solid transparent;
   border-radius: 5px;
   cursor: pointer;
   padding: 1vh .5vw;
   min-width: 80px;
   align-self: center;
 }
+
 button:hover {
   background-color: var(--white-50);
   color: var(--green);
@@ -97,6 +99,9 @@ button:hover {
 body.dark-mode button {
   background-color: var(--green-darkest-80);
   color: var(--white);
+}
+body.dark-mode button:hover {
+  background-color: var(--green-darker-80);
 }
 
 form {
@@ -114,6 +119,7 @@ input, textarea {
   margin: 1vh 0;
   padding: 1vh 1vw;
   background-color: var(--white);
+  font-size: 1rem;
   color: var(--green);
   border: 2px solid var(--green);
 }
@@ -151,6 +157,15 @@ main {
 }
 
 .error {
+  margin: 2vh 0;
+  padding: clamp(5px, .5vh, 10px) clamp(5px, 1vw, 20px);
+  justify-self: center;
+  width: fit-content;
+  color: var(--red);
+  outline: 2px solid var(--red);
+}
+
+.required-star {
   color: var(--red);
 }
 
@@ -185,13 +200,12 @@ main {
 
 .user-card-compact .user-profile .user-info {
   overflow: hidden;
-  margin: .25rem;
 }
 
 .user-profile {
   border: 2px solid var(--gray-80);
   width: clamp(180px, 20vw, 200px);
-  height: clamp(220px, 8vw, 300px);
+  height: clamp(250px, 8vw, 300px);
   margin-top: 20px;
   padding: .5rem 1rem;
   border-radius: 10px;
@@ -212,7 +226,7 @@ body.dark-mode .user-profile {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: .5rem;
+  padding-bottom: 1rem;
 }
 
 .user-profile p {
@@ -251,15 +265,10 @@ body.dark-mode .user-profile {
   margin: .5rem 0 1rem;
 }
 
-
-
-header, footer {
-  flex-shrink: 0;
-}
-
 /* Header Styling */
 header {
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   background-color: var(--green);
@@ -293,7 +302,6 @@ header .left-section {
   color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
-  border: none;
   font-size: 1.1em;
 }
 
@@ -302,9 +310,8 @@ header .left-section {
   color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
-  border: none;
   font-size: 1.1em;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  
 }
 
 .auth-buttons {
@@ -314,34 +321,32 @@ header .left-section {
 
 .signup-btn, .login-btn {
   background: none;
-  border: none;
   color: var(--white);
   padding: 8px 12px;
-  cursor: pointer;
   font-size: 1.2em;
   font-weight: 700;
   white-space: nowrap;
-
 }
 
 /* Footer Styling */
-
 footer {
-  border-top: 3px solid var(--white);
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--lime);
-  padding: 15px 20px;
   width: 100%;
-  box-sizing: border-box;
   position: fixed;
   bottom: 0;
+  background-color: var(--lime);
+  border-top: 1px solid var(--green);
+  padding: 15px 20px;
+  box-sizing: border-box;
   font-weight: 700;
 }
 
 body.dark-mode footer {
   background-color: var(--green-darkest);
+  border-color: var(--white);
 }
 
 /* Copyright Info */
@@ -352,6 +357,7 @@ body.dark-mode footer {
 
 /* Navigation Options */
 .footer-center {
+  justify-content: center;
   flex: 1;
   text-align: center;
   display: flex;
@@ -363,13 +369,15 @@ body.dark-mode footer {
   font-weight: 900;
   font-size: 1.2em;
   padding: 8px 12px;
-  border: none;
   cursor: pointer;
   white-space: nowrap;
   min-width: 120px;
 }
 
 /* Homepage styling */
+.loading-users {
+  margin: 2vh 0;
+}
 
 .top-content {
   margin-top: 0;
@@ -378,7 +386,7 @@ body.dark-mode footer {
 }
 
 body.dark-mode .top-content {
-  background-color: #536C53;
+  background-color: #536C5380;
 }
   
 body.dark-mode .search-input {
@@ -490,14 +498,10 @@ input:checked + .slider:before {
 
 
 /* User page Styling */
-
 .generate-btn {
   background-color: var(--green);
-  color: var(--white);
   font-size: 1rem;
   font-weight: 700;
-  cursor: pointer;
-  border: none;
   border-radius: 10px;
   padding: 10px 20px;
   margin-bottom: 2vh;
@@ -543,14 +547,11 @@ body.dark-mode .users-displayed select {
   background-color: var(--green);
   color: var(--white);
   padding: 8px 12px;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 /* User Profile Styling */
-
 .container {
   min-height: 100vh;
   height: 100%;
@@ -602,7 +603,6 @@ body.dark-mode .contribution-container {
   padding: 10px 20px;
   background: red;
   color: white;
-  border: none;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -630,12 +630,6 @@ body.dark-mode .chart-container {
 .chart-container text {
   fill: white !important;
 }
-
-.error {
-  color: red;
-  margin-top: 10px;
-}
-
 
 /* Contact Page Styling */
 .contact-page {

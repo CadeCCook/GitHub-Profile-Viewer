@@ -8,11 +8,11 @@ function Signup() {
             <Header />
             <h2>Sign Up</h2>
             <form action="/signup" method="POST">
-                <label htmlFor="username">Display Name</label>
+                <label htmlFor="username">Display Name<span className='required-star'> *</span></label>
                 <input type="text" id="username" name="username" required placeholder="Enter your username..." />
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password<span className='required-star'> *</span></label>
                 <input type="password" id="password" name="password" required placeholder="Create a password..." />
-                <label htmlFor="confirm-password">Confirm Password</label>
+                <label htmlFor="confirm-password">Confirm Password<span className='required-star'> *</span></label>
                 <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password..." />
                 <label htmlFor="email">Email (optional)</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email..." />
