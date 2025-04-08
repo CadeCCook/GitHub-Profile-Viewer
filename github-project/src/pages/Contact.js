@@ -16,10 +16,33 @@ function Contact() {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+  
+    const form = e.target;
+    const formData = new FormData(form);
+  
+    try {
+      const response = await fetch("https://formspree.io/f/xwplwgaz", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+  
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset(); 
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Error submitting the form. Please check your connection.");
+    }
   };
+  
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
@@ -48,7 +71,7 @@ function Contact() {
             <div className="thank-you-message">
               <h2>Thank you for reaching out!</h2>
               <p>We appreciate your message and will get back to you as soon as possible.</p>
-              <button onClick={() => navigate('/')}>Back to Home</button>
+              <button className="back-home-btn" onClick={() => navigate('/')}>Back to Home</button>
               <h4>No Further Action Required</h4>
               <p>Do you need to submit another form? <a href="/contact">Click here</a></p>
             </div>
