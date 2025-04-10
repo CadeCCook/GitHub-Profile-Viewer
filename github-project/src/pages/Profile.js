@@ -11,12 +11,10 @@ import UserCard from '../components/UserCard';
 function Profile() {
   const { username } = useParams();
   const [userInfo, setUserInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedStatistic, setSelectedStatistic] = useState('Monthly Activity');
   const [contributionsData, setContributionsData] = useState(null);
   const [languageData, setLanguageData] = useState([]);
-  
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +57,7 @@ function Profile() {
         const total = Object.values(languageCounts).reduce((acc, count) => acc + count, 0);
         const languages = Object.keys(languageCounts).map((language) => ({
           language,
-          value: Math.round((languageCounts[language] / total) * 1000) / 10,
+          value: (languageCounts[language] / total) * 100,
         }));
 
         setLanguageData(languages);
@@ -80,7 +78,7 @@ function Profile() {
   }, [username]);
 
   if (loading) {
-    return <p className='loading'>Loading user profile...</p>;
+    return <p>Loading user profile...</p>;
   }
 
   if (!userInfo) {
@@ -100,38 +98,29 @@ function Profile() {
           <UserCard user={userInfo} variant="detailed" />
         </div>
         <div className="statistic-dropdown">
-          <select
-            value={selectedStatistic}
-            onChange={(e) => setSelectedStatistic(e.target.value)}
-          >
+          <select>
             <option value="Monthly Activity">Monthly Activity</option>
             <option value="Repository Contributions">Repository Contributions</option>
           </select>
         </div>
 
-        <div className='selected-statistic'>
-          <h3>Selected Statistic: {selectedStatistic}</h3>
-          
-          {selectedStatistic === "Monthly Activity" ? (
-            <div className="contribution-container">
-              {contributionsData ? (
-                <ContributionsBarChart data={contributionsData} />
-              ) : (
-                <p>No contribution data available.</p>
-              )}
-            </div>
+        <div className="contribution-container">
+          {contributionsData ? (
+            <ContributionsBarChart data={contributionsData} />
           ) : (
-            <div className="language-pie-chart">
-              <h3>Languages Used</h3>
-              {languageData.length > 0 ? (
-                <LanguagePieChart data={languageData} />
-              ) : (
-                <p>No language data available or loading...</p>
-              )}
-            </div>
+            <p>No contribution data available.</p>
           )}
-          </div>
         </div>
+
+        <div className="language-pie-chart">
+          <h3>Languages Used</h3>
+          {languageData.length > 0 ? (
+            <LanguagePieChart data={languageData} />
+          ) : (
+            <p>No language data available or loading...</p>
+          )}
+        </div>
+      </div>
       <Footer />
     </>
   );
