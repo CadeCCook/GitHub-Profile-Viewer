@@ -12,6 +12,7 @@ function Profile() {
   const { username } = useParams();
   const [userInfo, setUserInfo] = useState(null);
   const [contributionsData, setContributionsData] = useState(null);
+  const [selectedStatistic, setSelectedStatistic] = useState('Monthly Activity');
   const [languageData, setLanguageData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
