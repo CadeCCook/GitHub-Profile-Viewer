@@ -11,12 +11,10 @@ import UserCard from '../components/UserCard';
 function Profile() {
   const { username } = useParams();
   const [userInfo, setUserInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedStatistic, setSelectedStatistic] = useState('Monthly Activity');
   const [contributionsData, setContributionsData] = useState(null);
   const [languageData, setLanguageData] = useState([]);
-  
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,7 +78,7 @@ function Profile() {
   }, [username]);
 
   if (loading) {
-    return <p className='loading'>Loading user profile...</p>;
+    return <p>Loading user profile...</p>;
   }
 
   if (!userInfo) {
@@ -100,10 +98,7 @@ function Profile() {
           <UserCard user={userInfo} variant="detailed" />
         </div>
         <div className="statistic-dropdown">
-          <select
-            value={selectedStatistic}
-            onChange={(e) => setSelectedStatistic(e.target.value)}
-          >
+          <select>
             <option value="Monthly Activity">Monthly Activity</option>
             <option value="Repository Contributions">Repository Contributions</option>
           </select>
@@ -130,8 +125,8 @@ function Profile() {
               )}
             </div>
           )}
-          </div>
         </div>
+      </div>
       <Footer />
     </>
   );
