@@ -55,11 +55,11 @@ function Profile() {
             languageCounts[repo.language] = (languageCounts[repo.language] || 0) + 1;
           }
         });
-
-        const total = Object.values(languageCounts).reduce((acc, count) => acc + count, 0);
+        // const total = Object.values(languageCounts).reduce((acc, count) => acc + count, 0);
         const languages = Object.keys(languageCounts).map((language) => ({
           language,
-          value: Math.round((languageCounts[language] / total) * 1000) / 10,
+          value: languageCounts[language],
+          // value: Math.round((languageCounts[language] / total) * 1000) / 10,
         }));
 
         setLanguageData(languages);
@@ -126,7 +126,7 @@ function Profile() {
               {languageData.length > 0 ? (
                 <LanguagePieChart data={languageData} />
               ) : (
-                <p>No language data available or loading...</p>
+                <p>No language data available</p>
               )}
             </div>
           )}

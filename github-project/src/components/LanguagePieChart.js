@@ -4,11 +4,21 @@ import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from 'recha
 const LanguagePieChart = ({ data }) => {
   console.log('Data received in Pie Chart:', data);
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const COLORS = [
+    '#FF4444', // Vibrant red
+    '#A28CFF', // Bright violet
+    '#00D2FF', // Electric sky blue
+    '#FF66C4', // Hot pink
+    '#FF6F00', // Deep orange
+    '#7FFFD4', // Aquamarine
+    '#FFD700', // Bright gold
+    '#00FA9A', // Medium spring green
+    '#DA70D6'  // Orchid
+  ];
 
   return (
     <ResponsiveContainer width="100%" height={500}>
-      <PieChart>
+      <PieChart className='pie-container'>
         <Pie
           data={data}
           dataKey="value"
@@ -25,7 +35,7 @@ const LanguagePieChart = ({ data }) => {
           ))}
         </Pie>
         <Tooltip />
-        <Legend />
+        <Legend className='pie-legend'/>
       </PieChart>
     </ResponsiveContainer>
   );
