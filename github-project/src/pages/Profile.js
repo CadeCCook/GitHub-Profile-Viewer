@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ContributionsBarChart from '../ContributionsBarChart';
+import ContributionsBarChart from '../components/ContributionsBarChart';
 import LanguagePieChart from '../components/LanguagePieChart';
 import { fetchContributions, aggregateContributionsByMonth } from '../githubService';
 import '../App.css';
@@ -16,14 +16,15 @@ function Profile() {
   const [selectedStatistic, setSelectedStatistic] = useState('Monthly Activity');
   const [contributionsData, setContributionsData] = useState(null);
   const [languageData, setLanguageData] = useState([]);
-  
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
+  const lastFourYears = Array.from({ length: 4 }, (_, i) => new Date().getFullYear() - i);
 
   useEffect(() => {
     const fetchData = async () => {
       const token = process.env.REACT_APP_GITHUB_STATS_API_KEY;
 
       try {
-        // Fetch user info
         const userResponse = await fetch(`https://api.github.com/users/${username}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -37,7 +38,6 @@ function Profile() {
         const userData = await userResponse.json();
         setUserInfo(userData);
 
-        // Fetch repositories data
         const reposResponse = await fetch(userData.repos_url, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -55,16 +55,15 @@ function Profile() {
             languageCounts[repo.language] = (languageCounts[repo.language] || 0) + 1;
           }
         });
-        // const total = Object.values(languageCounts).reduce((acc, count) => acc + count, 0);
+
         const languages = Object.keys(languageCounts).map((language) => ({
           language,
           value: languageCounts[language],
-          // value: Math.round((languageCounts[language] / total) * 1000) / 10,
         }));
 
         setLanguageData(languages);
 
-        const weeks = await fetchContributions(username, token);
+        const weeks = await fetchContributions(username, token, selectedYear);
         const aggregatedData = aggregateContributionsByMonth(weeks);
         setContributionsData(aggregatedData);
 
@@ -77,17 +76,10 @@ function Profile() {
     };
 
     fetchData();
-  }, [username]);
+  }, [username, selectedYear]);
 
-  if (loading) {
-    return <p className='loading'>Loading user profile...</p>;
-  }
-
-  if (!userInfo) {
-    return <p>No user data available</p>;
-  }
-
-  console.log("Language Data:", languageData);
+  if (loading) return <p className='loading'>Loading user profile...</p>;
+  if (!userInfo) return <p>No user data available</p>;
 
   return (
     <>
@@ -99,11 +91,9 @@ function Profile() {
         <div className="profile-info">
           <UserCard user={userInfo} variant="detailed" />
         </div>
+
         <div className="statistic-dropdown">
-          <select
-            value={selectedStatistic}
-            onChange={(e) => setSelectedStatistic(e.target.value)}
-          >
+          <select value={selectedStatistic} onChange={(e) => setSelectedStatistic(e.target.value)}>
             <option value="Monthly Activity">Monthly Activity</option>
             <option value="Repository Contributions">Repository Contributions</option>
           </select>
@@ -111,11 +101,15 @@ function Profile() {
 
         <div className='selected-statistic'>
           <h3>Selected Statistic: {selectedStatistic}</h3>
-          
+
           {selectedStatistic === "Monthly Activity" ? (
             <div className="contribution-container">
               {contributionsData ? (
-                <ContributionsBarChart data={contributionsData} />
+                <ContributionsBarChart
+                  data={contributionsData}
+                  selectedYear={selectedYear}
+                  onYearChange={(year) => setSelectedYear(Number(year))}
+                />
               ) : (
                 <p>No contribution data available.</p>
               )}
@@ -130,8 +124,8 @@ function Profile() {
               )}
             </div>
           )}
-          </div>
         </div>
+      </div>
       <Footer />
     </>
   );

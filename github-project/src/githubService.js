@@ -1,4 +1,7 @@
-export const fetchContributions = async (username, token) => {
+export const fetchContributions = async (username, token, year) => {
+  const fromDate = `${year}-01-01T00:00:00Z`;
+  const toDate = `${year}-12-31T23:59:59Z`;
+
   try {
     const response = await fetch(`https://api.github.com/graphql`, {
       method: 'POST',
@@ -9,7 +12,7 @@ export const fetchContributions = async (username, token) => {
       body: JSON.stringify({
         query: `{
           user(login: "${username}") {
-            contributionsCollection {
+            contributionsCollection(from: "${fromDate}", to: "${toDate}") {
               contributionCalendar {
                 weeks {
                   contributionDays {
@@ -25,8 +28,8 @@ export const fetchContributions = async (username, token) => {
     });
 
     const data = await response.json();
-    console.log(data);
-    
+    console.log(`Contributions for ${year}:`, data);
+
     if (!data?.data?.user?.contributionsCollection) {
       throw new Error('No contribution data found');
     }
