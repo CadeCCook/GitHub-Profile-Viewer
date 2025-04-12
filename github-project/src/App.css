@@ -6,7 +6,6 @@
   --green-dark: #344E41;
   --green-dark-80: #344E41CC;
   --green-darker: #1E2C20;
-  --green-darker-80: #1E2C20CC;
   --green-darkest: #18211A;
   --green-darkest-80: #18211ACC;
   --white: #DAD7CD; 
@@ -34,6 +33,7 @@ body {
   font-size: 1rem;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body.dark-mode {
@@ -82,14 +82,13 @@ button {
   font-weight: 700;
   color: var(--white);
   background-color: var(--green-dark-80);
-  border: 1px solid transparent;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
   padding: 1vh .5vw;
   min-width: 80px;
   align-self: center;
 }
-
 button:hover {
   background-color: var(--white-50);
   color: var(--green);
@@ -99,9 +98,6 @@ button:hover {
 body.dark-mode button {
   background-color: var(--green-darkest-80);
   color: var(--white);
-}
-body.dark-mode button:hover {
-  background-color: var(--green-darker-80);
 }
 
 form {
@@ -119,7 +115,6 @@ input, textarea {
   margin: 1vh 0;
   padding: 1vh 1vw;
   background-color: var(--white);
-  font-size: 1rem;
   color: var(--green);
   border: 2px solid var(--green);
 }
@@ -156,16 +151,13 @@ main {
   text-align: center;
 }
 
-.error {
-  margin: 2vh 0;
-  padding: clamp(5px, .5vh, 10px) clamp(5px, 1vw, 20px);
-  justify-self: center;
-  width: fit-content;
-  color: var(--red);
-  outline: 2px solid var(--red);
+.loading {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
-.required-star {
+.error {
   color: var(--red);
 }
 
@@ -192,6 +184,7 @@ main {
 /*** Component Styling ***/
 /* UserCard */
 .user-list {
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: clamp(10px, 1vw, 20px);
@@ -200,6 +193,7 @@ main {
 
 .user-card-compact .user-profile .user-info {
   overflow: hidden;
+  margin: .25rem;
 }
 
 .user-profile {
@@ -226,7 +220,7 @@ body.dark-mode .user-profile {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
 }
 
 .user-profile p {
@@ -265,10 +259,15 @@ body.dark-mode .user-profile {
   margin: .5rem 0 1rem;
 }
 
+
+
+header, footer {
+  flex-shrink: 0;
+}
+
 /* Header Styling */
 header {
   display: flex;
-  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   background-color: var(--green);
@@ -302,6 +301,7 @@ header .left-section {
   color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
+  border: none;
   font-size: 1.1em;
 }
 
@@ -310,8 +310,9 @@ header .left-section {
   color: var(--white);
   padding: 8px 12px;
   cursor: pointer;
+  border: none;
   font-size: 1.1em;
-  
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .auth-buttons {
@@ -321,32 +322,34 @@ header .left-section {
 
 .signup-btn, .login-btn {
   background: none;
+  border: none;
   color: var(--white);
   padding: 8px 12px;
+  cursor: pointer;
   font-size: 1.2em;
   font-weight: 700;
   white-space: nowrap;
+
 }
 
 /* Footer Styling */
+
 footer {
+  border-top: 3px solid var(--white);
   display: flex;
-  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--lime);
+  padding: 15px 20px;
   width: 100%;
+  box-sizing: border-box;
   position: fixed;
   bottom: 0;
-  background-color: var(--lime);
-  border-top: 1px solid var(--green);
-  padding: 15px 20px;
-  box-sizing: border-box;
   font-weight: 700;
 }
 
 body.dark-mode footer {
   background-color: var(--green-darkest);
-  border-color: var(--white);
 }
 
 /* Copyright Info */
@@ -357,7 +360,6 @@ body.dark-mode footer {
 
 /* Navigation Options */
 .footer-center {
-  justify-content: center;
   flex: 1;
   text-align: center;
   display: flex;
@@ -369,15 +371,13 @@ body.dark-mode footer {
   font-weight: 900;
   font-size: 1.2em;
   padding: 8px 12px;
+  border: none;
   cursor: pointer;
   white-space: nowrap;
   min-width: 120px;
 }
 
 /* Homepage styling */
-.loading-users {
-  margin: 2vh 0;
-}
 
 .top-content {
   margin-top: 0;
@@ -386,7 +386,7 @@ body.dark-mode footer {
 }
 
 body.dark-mode .top-content {
-  background-color: #536C5380;
+  background-color: #536C53;
 }
   
 body.dark-mode .search-input {
@@ -498,10 +498,14 @@ input:checked + .slider:before {
 
 
 /* User page Styling */
+
 .generate-btn {
   background-color: var(--green);
+  color: var(--white);
   font-size: 1rem;
   font-weight: 700;
+  cursor: pointer;
+  border: none;
   border-radius: 10px;
   padding: 10px 20px;
   margin-bottom: 2vh;
@@ -547,11 +551,14 @@ body.dark-mode .users-displayed select {
   background-color: var(--green);
   color: var(--white);
   padding: 8px 12px;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 /* User Profile Styling */
+
 .container {
   min-height: 100vh;
   height: 100%;
@@ -559,50 +566,64 @@ body.dark-mode .users-displayed select {
 
 .profile-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: .25fr 1fr .75fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto 1fr;
   gap: 1rem;
   flex-grow: 1;
+  min-height: 100vh;
 }
 
 body.dark-mode .profile-container {
   background-color: var(--green-dark);
 }
 
-
 .profile-title {
-  grid-column: 1 / 4;
+  grid-column: 1 / 3;
 }
 
 .profile-info {
-  grid-row-start: 2;
+  margin-top: 5rem;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
 }
 
 .statistic-dropdown {
-  grid-column-start: 1;
-  grid-row-start: 3;
-  margin: 20px;
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
 }
 
-.contribution-container {
-  grid-area: 2 / 2 / 4 / 4; /* RS, CS, RE, CE */
-  margin-right: 3rem;
+.statistic-dropdown select {
+  background-color: var(--white);
+  border: 2px solid var(--green);
+  padding: 0.5rem;
+  color: var(--green);
+  width: clamp(200px, 10vw, 250px);
+}
+
+body.dark-mode .statistic-dropdown select {
+  background-color: var(--green-dark);
+  color: var(--white);
+  border-color: var(--white-50);
+}
+
+.selected-statistic {
+  grid-column: 2;
+  grid-row: 2 / 4;
+  overflow: hidden;
 }
 
 body.dark-mode .contribution-container {
   background-color: var(--green-dark);
 }
 
-.statistic-dropdown {
-  justify-self: center;
-}
-
-
 .back-btn {
   margin-top: 20px;
   padding: 10px 20px;
   background: red;
   color: white;
+  border: none;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -612,9 +633,13 @@ body.dark-mode .contribution-container {
 }
 
 .chart-container {
-  background-color: #1e1e1e;
-  padding: 20px;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  padding: 10px;
+  box-sizing: border-box;
   border-radius: 10px;
+  background-color: #1e1e1e;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
@@ -630,6 +655,44 @@ body.dark-mode .chart-container {
 .chart-container text {
   fill: white !important;
 }
+
+.language-pie-chart {
+  margin: 20px auto;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.pie-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.recharts-legend-wrapper {
+  padding: 2rem;
+  background-color: var(--lime);
+  border-radius: 20px;
+}
+
+.recharts-default-legend {
+  display: flex;
+  flex-direction: row;
+}
+
+.recharts-legend-item-text {
+  color: var(--green) !important;
+  font-weight: 900;
+}
+  
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
 
 /* Contact Page Styling */
 .contact-page {
@@ -733,30 +796,4 @@ body.dark-mode .contact-form textarea {
   text-align: center;
   margin-top: 20px;
   align-self: center;
-}
-
-.back-home-btn {
-  background-color: var(--green-dark-80);
-  color: var(--white);
-  border: 1px solid transparent;
-  font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.back-home-btn:hover {
-  background-color: var(--lime);
-  color: var(--green-darker);
-  border: 1px solid var(--green-darker);
-}
-
-body.dark-mode .back-home-btn {
-  background-color: var(--green-darkest-80);
-  color: var(--white);
-}
-
-body.dark-mode .back-home-btn:hover {
-  background-color: var(--lime);
-  color: var(--green-darker);
 }

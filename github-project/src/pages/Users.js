@@ -8,9 +8,9 @@ import UserCard from '../components/UserCard';
 
 function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userCount, setUserCount] = useState(4);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,14 +24,11 @@ function Users() {
   const generateRandomUsers = async () => {
     try {
       setError(null);
-      setLoading(true);
 
-      // Fetch users
       const searchResponse = await axios.get('https://api.github.com/search/users?q=user&per_page=50');
 
-      // Pick 4 random users from the search results
       const randomUsers = [];
-      while (randomUsers.length < 4) {
+      while (randomUsers.length < userCount) {
         const randomIndex = Math.floor(Math.random() * searchResponse.data.items.length);
         const randomUser = searchResponse.data.items[randomIndex];
 
@@ -40,7 +37,6 @@ function Users() {
         }
       }
 
-      // Fetch full details of the random users
       const users = await Promise.all(
         randomUsers.map(async (user) => {
           const userDetails = await axios.get(user.url);
@@ -52,8 +48,6 @@ function Users() {
     } catch (err) {
       setRandomUsers([]);
       setError("Error fetching random users.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -63,22 +57,26 @@ function Users() {
     navigate('/');
   };
 
+  const handleUserCountChange = (e) => {
+    setUserCount(parseInt(e.target.value));
+  };
+
   useEffect(() => {
     generateRandomUsers();
-  }, []);
+  }, [userCount]);
 
   return (
     <div>
       <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
 
       {/* Main Content */}
-      <main>
+      <main style={{ paddingBottom: '100px' }}>
         <h2>Random GitHub Users</h2>
 
         <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
         
         <h3 className='users-displayed'>Show 
-          <select>
+          <select value={userCount} onChange={handleUserCountChange}>
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="12">12</option>
@@ -86,19 +84,23 @@ function Users() {
             <option value="20">20</option>
           </select> at Once</h3>
 
-        {error && !loading && <p className="error">{error}</p>}
+        {error && <p className="error">{error}</p>}
 
         {/* Display Random Users */}
         <div className="user-list">
-          {loading ? (
-            <p className='loading-users'>Loading users...</p>
-          ) : randomUsers.length > 0 ? (
+          {randomUsers.length > 0 ? (
             randomUsers.map((user) => (
-              user && <UserCard user={user} variant='compact' />
-          ))
-            ) : (
-              !error && <p>No Users Found.</p>
-            )}
+              user && (
+                <UserCard  
+                  key={user.id}
+                  user={user} 
+                  compact={true}
+                />
+              )
+            ))
+          ) : (
+            <p>Loading users...</p>
+          )}
         </div>
       </main>
       <Footer />

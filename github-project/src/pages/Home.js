@@ -8,16 +8,10 @@ import UserCard from '../components/UserCard';
 function Home() {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Collect Github user data for search
   const fetchGitHubUsers = async () => {
     if (!username) return;
-
-    setLoading(true);
-    setError(null);
-    setUserData([]);
 
     try {
       setError(null);
@@ -32,9 +26,8 @@ function Home() {
 
       setUserData(users);
     } catch (err) {
+      setUserData([]);
       setError("No users found! Try another search.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -64,13 +57,11 @@ function Home() {
         </div>
 
         <div className='middle-content'>
-          {loading && <p className='loading-users'>Loading users...</p>}
-
-          {/* Display for Users */}
           {userData.length > 0 && (
             <div className="user-list">
               {userData.map((user) => (
                 <UserCard 
+                  key={user.id}
                   user={user} 
                   variant='compact'
                 />
