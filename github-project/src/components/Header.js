@@ -1,59 +1,52 @@
-import {useEffect, useState} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import {LoginButton, SignUpButton} from './CustomButton';
+import { useAuth } from '../components/AuthContext';
 
 const Header = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { authState, logout } = useAuth();
+  const { isAuthenticated, username } = authState;
 
-    // Check for token in local storage
-    useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-          setIsAuthenticated(true);
-        }
-      }, []);
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
-    const handleLogout = () => {
-        localStorage.removeItem('authToken');
-        setIsAuthenticated(false);
-        navigate('/');
-    };
+  const handleToggle = () => {
+    if (location.pathname === '/') {
+      navigate('/users');
+    } else {
+      navigate('/');
+    }
+  };
 
-    const handleToggle = () => {
-        if (location.pathname === '/') {
-            navigate('/users');
-        } else {
-            navigate('/');
-        }
-    };
+  return (
+    <header>
+      <div className="left-section">
+        <div className="logo">GitHunt</div>
+        <button className="home-btn" onClick={handleToggle}>
+          {location.pathname === '/' ? 'Users' : 'Home'}
+        </button>
 
-    return (
-        <header>
-            <div className="left-section">
-                <div className="logo">GitHunt</div>
+        {isAuthenticated && username && (
+          <button className="user-btn" onClick={() => navigate(`/profile/${username}`)}>
+            {username}'s Profile
+          </button>
+        )}
+      </div>
 
-                {/* Toggle Home/User Button */}
-                <button className="home-btn" onClick= {handleToggle}>
-                    {location.pathname === '/' ? 'Users' : 'Home'}
-                </button>
-
-                {isAuthenticated && <button className="user-btn" onClick={handleLogout}>Log Out</button>}
-            </div>
-
-            <div className="auth-buttons">
-                {!isAuthenticated ? (
-                <>
-                    <SignUpButton />
-                    <LoginButton />
-                </>
-                ) : (
-                    <button className="logout-btn" onClick={handleLogout}>Log Out</button>
-                )}
-            </div>
-        </header>
-    );
+      <div className="auth-buttons">
+        {!isAuthenticated ? (
+          <>
+            <button onClick={() => navigate('/signup')}>Sign Up</button>
+            <button onClick={() => navigate('/login')}>Log In</button>
+          </>
+        ) : (
+          <button className="logout-btn" onClick={handleLogout}>Log Out</button>
+        )}
+      </div>
+    </header>
+  );
 };
 
 export default Header;

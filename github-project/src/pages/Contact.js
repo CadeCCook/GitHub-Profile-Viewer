@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -52,8 +50,6 @@ function Contact() {
 
   return (
     <div className="contact-container">
-      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
-
       <div className="contact-page">
         <main>
           {!submitted ? (
@@ -78,8 +74,6 @@ function Contact() {
           )}
         </main>
       </div>
-
-      <Footer />
     </div>
   );
 }

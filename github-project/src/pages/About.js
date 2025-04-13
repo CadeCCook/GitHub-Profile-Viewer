@@ -1,11 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function About() {
     return (
         <div className='about-container'>
-            <Header />
             <h2>About Us</h2>
             <p> 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ipsum eu nisl consectetur 
@@ -25,7 +22,6 @@ function About() {
                 venenatis sodales. Etiam faucibus, metus ut dignissim pretium, justo velit euismod diam, non 
                 malesuada neque neque at ex. Proin sit amet enim in tellus bibendum luctus in dapibus purus.
              </p>
-            <Footer />
         </div>
     );
 }

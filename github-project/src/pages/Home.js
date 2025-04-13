@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import '../App.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import UserCard from '../components/UserCard';
 
 function Home() {
@@ -33,8 +31,6 @@ function Home() {
 
   return (
     <div className='home-container'>
-      <Header />
-
       <main>
         <div className='top-content'>
           <p className="intro-text">
@@ -78,8 +74,6 @@ function Home() {
           </section>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

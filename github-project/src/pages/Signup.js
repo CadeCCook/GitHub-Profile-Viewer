@@ -1,27 +1,71 @@
-import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 
 function Signup() {
-    return (
-        <div className='signup-container'>
-            <Header />
-            <h2>Sign Up</h2>
-            <form action="/signup" method="POST">
-                <label htmlFor="username">Display Name<span className='required-star'> *</span></label>
-                <input type="text" id="username" name="username" required placeholder="Enter your username..." />
-                <label htmlFor="password">Password<span className='required-star'> *</span></label>
-                <input type="password" id="password" name="password" required placeholder="Create a password..." />
-                <label htmlFor="confirm-password">Confirm Password<span className='required-star'> *</span></label>
-                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password..." />
-                <label htmlFor="email">Email (optional)</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email..." />
-                <button type="submit">Sign Up</button>
-                <p className='account-redirect'>Already have an account? <a href="login">Login</a></p>
-            </form>
-            <Footer />
-        </div>
-    );
+  const [form, setForm] = useState({ username: '', email: '', password: '', confirmPassword: '' });
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (form.password !== form.confirmPassword) {
+      return setMessage("Passwords do not match.");
+    }
+
+    try {
+      const res = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: form.username,
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setMessage(data.error || "Signup failed.");
+      } else {
+        const { token } = data;
+        login(token, form.username);
+        setMessage("Signup successful!");
+        navigate(`/profile/${form.username}`);
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage("An error occurred during signup.");
+    }
+  };
+
+  return (
+    <div className='signup-container'>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">GitHub Username<span className='required-star'> *</span></label>
+        <input type="text" id="username" name="username" required value={form.username} onChange={handleChange} placeholder="Enter your username..." />
+
+        <label htmlFor="password">Password<span className='required-star'> *</span></label>
+        <input type="password" id="password" name="password" required value={form.password} onChange={handleChange} placeholder="Create a password..." />
+
+        <label htmlFor="confirmPassword">Confirm Password<span className='required-star'> *</span></label>
+        <input type="password" id="confirm-password" name="confirmPassword" required value={form.confirmPassword} onChange={handleChange} placeholder="Confirm your password..." />
+
+        <label htmlFor="email">Email *</label>
+        <input type="email" id="email" name="email" value={form.email} onChange={handleChange} placeholder="Enter your email..." />
+
+        <button type="submit">Sign Up</button>
+        <p className='account-redirect'>Already have an account? <a href="/login">Login</a></p>
+        {message && <p className='form-message'>{message}</p>}
+      </form>
+    </div>
+  );
 }
 
 export default Signup;

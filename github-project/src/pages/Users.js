@@ -67,8 +67,6 @@ function Users() {
 
   return (
     <div>
-      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
-
       {/* Main Content */}
       <main style={{ paddingBottom: '100px' }}>
         <h2>Random GitHub Users</h2>
@@ -103,7 +101,6 @@ function Users() {
           )}
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

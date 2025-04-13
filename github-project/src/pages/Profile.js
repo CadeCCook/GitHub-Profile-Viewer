@@ -4,8 +4,6 @@ import ContributionsBarChart from '../components/ContributionsBarChart';
 import LanguagePieChart from '../components/LanguagePieChart';
 import { fetchContributions, aggregateContributionsByMonth } from '../githubService';
 import '../App.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import UserCard from '../components/UserCard';
 
 function Profile() {
@@ -83,7 +81,6 @@ function Profile() {
 
   return (
     <>
-      <Header />
       <div className="profile-container">
         <div className="profile-title">
           <h2>Statistics</h2>
@@ -126,7 +123,6 @@ function Profile() {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }
