@@ -95,7 +95,7 @@ function Profile() {
         <div className="statistic-dropdown">
           <select value={selectedStatistic} onChange={(e) => setSelectedStatistic(e.target.value)}>
             <option value="Monthly Activity">Monthly Activity</option>
-            <option value="Repository Contributions">Repository Contributions</option>
+            <option value="Languages Used">Languages Used</option>
           </select>
         </div>
 
