@@ -146,6 +146,20 @@ body.dark-mode ::placeholder {
   color: var(--white-50);
 }
 
+select {
+  background-color: var(--white);
+  cursor: pointer;
+  border-color: var(--green);
+  color: var(--green);
+  font-weight: 700;
+}
+
+body.dark-mode select {
+  background-color: var(--green-dark);
+  color: var(--white);
+  border-color: var(--white);
+}
+
 main {
   flex-grow: 1;
   text-align: center;
@@ -535,12 +549,6 @@ body.dark-mode .users-displayed {
   color: var(--white);
 }
 
-body.dark-mode .users-displayed select {
-  background-color: var(--green-dark);
-  color: var(--white);
-  border-color: var(--white);
-}
-
 .user-details {
   display: flex;
   flex-direction: column;
@@ -594,6 +602,19 @@ body.dark-mode .profile-container {
   justify-self: center;
 }
 
+.selected-statistic {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column; 
+  align-items: stretch;   
+  text-align: center;     
+  gap: 2rem;
+  width: 100%;   
+}
+.year-selector {
+  padding-bottom: 3rem;
+}
+
 .statistic-dropdown select {
   background-color: var(--white);
   border: 2px solid var(--green);
@@ -616,20 +637,6 @@ body.dark-mode .statistic-dropdown select {
 
 body.dark-mode .contribution-container {
   background-color: var(--green-dark);
-}
-
-.back-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: red;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.back-btn:hover {
-  background: darkred;
 }
 
 .chart-container {
@@ -669,6 +676,26 @@ body.dark-mode .chart-container {
 .pie-container {
   display: flex;
   flex-direction: row;
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-tick-line,
+.recharts-cartesian-grid line {
+  stroke: var(--green);
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: var(--green);
+}
+
+body.dark-mode .recharts-cartesian-axis-line,
+body.dark-mode .recharts-cartesian-tick-line,
+body.dark-mode .recharts-cartesian-grid line {
+  stroke: var(--white);
+}
+
+body.dark-mode .recharts-cartesian-axis-tick text {
+  fill: var(--white);
 }
 
 .recharts-legend-wrapper {
