@@ -1,0 +1,67 @@
+header {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--green);
+    color: var(--white);
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :global(body.dark-mode) header {
+    background-color: var(--green-darker);
+  }
+  :global(body.dark-mode) header button {
+    background-color: var(--green-darker);
+  }
+  
+  header .leftSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 2vw;
+}
+
+.usersBtn {
+  background: none;
+  color: var(--white);
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.1em;
+}
+
+.homeBtn {
+  background: none;
+  color: var(--white);
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1.2vw;
+}
+
+.authButtons button {
+  background: none;
+  border: none;
+  color: var(--white);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 700;
+  white-space: nowrap;
+
+}

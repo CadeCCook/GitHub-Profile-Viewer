@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import UserCard from '../components/UserCard';
 
 function Users() {

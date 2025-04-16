@@ -1,0 +1,18 @@
+:root {
+    /* Color Schemes */
+    /* Tool for opacity % https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4 */
+   
+    --green: #3A5A40;
+    --green-dark: #344E41;
+    --green-dark-80: #344E41CC;
+    --green-darker: #1E2C20;
+    --green-darkest: #18211A;
+    --green-darkest-80: #18211ACC;
+    --white: #DAD7CD; 
+    --white-50: #DAD7CD80;
+    --lime: #A3B18A;
+    --red: #BF8989;
+    --red-50: #BF898980;
+    --gray: #4A4841;
+    --gray-80: #75847CCC;
+  }

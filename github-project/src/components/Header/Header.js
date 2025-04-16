@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../components/AuthContext';
+import { useAuth } from '../AuthContext';
+import styles from './Header.module.css';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -22,27 +23,27 @@ const Header = () => {
 
   return (
     <header>
-      <div className="left-section">
-        <div className="logo">GitHunt</div>
-        <button className="home-btn" onClick={handleToggle}>
+      <div className={styles.leftSection}>
+        <div className={styles.logo}>GitHunt</div>
+        <button className={styles.homeBtn} onClick={handleToggle}>
           {location.pathname === '/' ? 'Users' : 'Home'}
         </button>
 
         {isAuthenticated && username && (
-          <button className="user-btn" onClick={() => navigate(`/profile/${username}`)}>
+          <button className={styles.userBtn} onClick={() => navigate(`/profile/${username}`)}>
             {username}'s Profile
           </button>
         )}
       </div>
 
-      <div className="auth-buttons">
+      <div className={styles.authButtons}>
         {!isAuthenticated ? (
           <>
             <button onClick={() => navigate('/signup')}>Sign Up</button>
             <button onClick={() => navigate('/login')}>Log In</button>
           </>
         ) : (
-          <button className="logout-btn" onClick={handleLogout}>Log Out</button>
+          <button className={styles.logoutBtn} onClick={handleLogout}>Log Out</button>
         )}
       </div>
     </header>

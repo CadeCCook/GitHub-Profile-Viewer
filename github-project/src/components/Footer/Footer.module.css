@@ -1,0 +1,99 @@
+footer {
+    flex-shrink: 0;
+    border-top: 3px solid var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--lime);
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    font-weight: 700;
+  }
+
+  :global(body.dark-mode) footer {
+    background-color: var(--green-darkest);
+  }
+  
+  /* Copyright Info */
+  .footerLeft {
+    flex: 1;
+    font-size: 0.8rem;
+  }
+  
+  /* Navigation Options */
+  .footerCenter {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .aboutBtn, .contactBtn {
+    color: var(--green);
+    background: none;
+    font-weight: 900;
+    font-size: 1.2em;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: 120px;
+  }
+
+  
+/* Darkmode toggle */
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--green);
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--white);
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--gray);
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
