@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import UserCard from '../components/UserCard';
+import UserCard from '../components/UserCard/UserCard';
 
 function Home() {
   const [username, setUsername] = useState("");

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ContributionsBarChart from '../components/ContributionsBarChart';
 import LanguagePieChart from '../components/LanguagePieChart';
 import { fetchContributions, aggregateContributionsByMonth } from '../githubService';
-import UserCard from '../components/UserCard';
+import UserCard from '../components/UserCard/UserCard';
 
 function Profile() {
   const { username } = useParams();

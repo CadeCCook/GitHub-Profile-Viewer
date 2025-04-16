@@ -1,9 +1,11 @@
 import React from "react";
-import { ProfileButton, GitHubButton } from "./CustomButton";
+import { ProfileButton, GitHubButton } from "../CustomButton";
+import styles from "./UserCard.module.css";
+import classNames from "classnames";
 
 const UserCard = ({ user, variant = "default" }) => {
     if (!user || typeof user !== 'object') {
-        return <div className="user-list">Invalid user data</div>;
+        return <div className={styles.userList}>Invalid user data</div>;
     }
 
     const detailedStats = [
@@ -14,20 +16,20 @@ const UserCard = ({ user, variant = "default" }) => {
     ];
 
     return (
-        <div className={`user-card user-card-${variant}`}>
-            <div className="user-profile">
+        <div className={classNames(styles.userCard, styles[`userCard-${variant}`])}>
+            <div className={styles.userProfile}>
                 <img src={user?.avatar_url || '/default-avatar.png'} alt="User Avatar" />
                 <h3>{user.login || "No Name Provided"}</h3>
 
-                <div className="user-info">
+                <div className={styles.userInfo}>
                     {user.bio && (
-                        <div className="has-bio">
+                        <div className={styles.hasBio}>
                             <p>{user.bio}</p>
                         </div>
                     )}
 
                     {variant !== "compact" && (
-                        <div className="expanded">
+                        <div className={styles.expanded}>
                             {variant === "default" && (
                                 <>
                                     <p>Public Repos: {user.public_repos}</p>
@@ -52,7 +54,7 @@ const UserCard = ({ user, variant = "default" }) => {
                     )}
                 </div>
 
-                <div className='user-actions'>
+                <div className={styles.userActions}>
                     {variant !== "detailed" && (
                         <ProfileButton username={user.login} />
                     )}
