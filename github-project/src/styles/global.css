@@ -345,16 +345,20 @@ body.dark-mode .profile-container {
 }
 
 .selected-statistic {
-  padding-top: 5rem;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column; 
   align-items: stretch;   
   text-align: center;     
   gap: 2rem;
-  width: 100%;   
 }
+
 .year-selector {
   padding-bottom: 3rem;
+}
+
+.chart-wrapper {
+  width: 90%;
 }
 
 .statistic-dropdown select {

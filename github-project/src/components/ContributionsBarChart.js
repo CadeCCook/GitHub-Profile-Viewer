@@ -15,15 +15,17 @@ function ContributionsBarChart({ data, selectedYear, onYearChange }) {
         </select>
       </div>
 
-      <ResponsiveContainer width="90%" height={300}>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="contributions" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="chart-wrapper">
+        <ResponsiveContainer height={300}>
+          <BarChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="contributions" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
