@@ -334,7 +334,7 @@ header .left-section {
   gap: 1.2vw;
 }
 
-.signup-btn, .login-btn {
+.auth-buttons button {
   background: none;
   border: none;
   color: var(--white);
@@ -364,6 +364,12 @@ footer {
 
 body.dark-mode footer {
   background-color: var(--green-darkest);
+}
+
+footer .footer-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Copyright Info */
