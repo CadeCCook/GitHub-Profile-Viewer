@@ -1,11 +1,4 @@
 /* UserCard */
-.userList {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(10px, 1vw, 20px);
-    justify-content: center;
-  }
   
   .userCard-compact .userProfile .userInfo {
     overflow: hidden;
