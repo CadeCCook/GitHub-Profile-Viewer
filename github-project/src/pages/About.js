@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 function About() {
     return (
         <div className='about-container'>
-            <Header />
             <div className="about-content">
                 <h2>About GitHub Profile Viewer</h2>
                 <p>
@@ -60,7 +59,6 @@ function About() {
                     the amazing work of developers around the world!
                 </p>
             </div>
-            <Footer />
         </div>
     );
 }

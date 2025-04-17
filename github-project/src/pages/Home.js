@@ -69,7 +69,7 @@ function Home() {
         <div className='bottom-content'>
           <section className="video-section">
             <video className="background-video" autoPlay loop muted>
-              <source src="project_video.mp4" type="video/mp4" />
+              <source src="GitHunt_video.mp4" type="video/mp4"/>
             </video>
           </section>
         </div>
