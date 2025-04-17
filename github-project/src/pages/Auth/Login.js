@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../components/AuthContext';
+import { useAuth } from '../../components/AuthContext';
+import styles from './Auth.module.css';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -53,7 +54,7 @@ function Login() {
         </div>
 
         <button type="submit">Login</button>
-        <p className='account-redirect'>Don't have an account? <a href="/signup">Sign up</a></p>
+        <p className={styles.accountRedirect}>Don't have an account? <a href="/signup">Sign up</a></p>
         {message && <p className='form-message'>{message}</p>}
       </form>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './About.module.css';
 
 function About() {
     return (
-        <div className='about-container'>
+        <div className={styles.aboutContainer}>
             <h2>About Us</h2>
             <p> 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ipsum eu nisl consectetur 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import UserCard from '../components/UserCard/UserCard';
+import UserCard from '../../components/UserCard/UserCard';
+import styles from './Users.module.css';
 
 function Users() {
   const [randomUsers, setRandomUsers] = useState([]);
@@ -68,9 +69,9 @@ function Users() {
       <main style={{ paddingBottom: '100px' }}>
         <h2>Random GitHub Users</h2>
 
-        <button className="generate-btn" onClick={generateRandomUsers}>Generate New Users</button>
+        <button className={styles.generateBtn} onClick={generateRandomUsers}>Generate New Users</button>
         
-        <h3 className='users-displayed'>Show 
+        <h3 className={styles.usersDisplayed}>Show 
           <select value={userCount} onChange={handleUserCountChange}>
             <option value="4">4</option>
             <option value="8">8</option>
@@ -82,7 +83,7 @@ function Users() {
         {error && <p className="error">{error}</p>}
 
         {/* Display Random Users */}
-        <div className="user-list">
+        <div className={styles.userList}>
           {randomUsers.length > 0 ? (
             randomUsers.map((user) => (
               user && (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './Contact.module.css';
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -48,11 +49,11 @@ function Contact() {
   };
 
   return (
-    <div className="contact-container">
-      <div className="contact-page">
+    <div className={styles.contactContaine}>
+      <div className={styles.contactPage}>
         <main>
           {!submitted ? (
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className={styles.contactForm} onSubmit={handleSubmit}>
               <h2>Contact Us</h2>
               <label htmlFor="name">Name:</label>
               <input type="text" name="name" placeholder="Enter your name..." required />
@@ -63,10 +64,10 @@ function Contact() {
               <button id="contact-submit-btn" type="submit">Submit</button>
             </form>
           ) : (
-            <div className="thank-you-message">
+            <div className={styles.thankYouMessage}>
               <h2>Thank you for reaching out!</h2>
               <p>We appreciate your message and will get back to you as soon as possible.</p>
-              <button className="back-home-btn" onClick={() => navigate('/')}>Back to Home</button>
+              <button className={styles.backHomeBtn} onClick={() => navigate('/')}>Back to Home</button>
               <h4>No Further Action Required</h4>
               <p>Do you need to submit another form? <a href="/contact">Click here</a></p>
             </div>

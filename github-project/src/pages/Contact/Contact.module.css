@@ -1,0 +1,77 @@
+.contactPage {
+    background-color: var(--white);
+    min-height: 100vh;
+  }
+  
+  :global(body.dark-mode) {
+    .contactPage {
+        background-color: var(--green-dark);
+    }
+}
+  
+  .contactContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--lime);
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    color: var(--green);
+    margin: auto; 
+  }
+  
+  .contactPage main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-height: 80vh;
+    background-color: inherit;
+  }
+  
+  #contact-submit-btn {
+    width:20%;
+    border-radius: 17px;
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    font-size: 1em;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    background-color: var(--white);
+    color: var(--green);
+  }
+  
+  :global(body.dark-mode) {
+    .contactForm input,
+    .contactForm textarea {
+        background-color: var(--green-dark);
+        color: var(--white);
+        border-color: var(--green-darkest-80);
+    }
+  } 
+  
+  .thankYouMessage {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 40px;
+    border-radius: 10px;
+  }
+  
+  .thankYouMessage button {
+    margin: 4vh 0;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

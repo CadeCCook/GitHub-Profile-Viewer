@@ -1,0 +1,12 @@
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    background-color: inherit;
+  }
+  
+  .aboutContainer p {
+    margin: 0 5vw;
+    font-size: 1.2em;
+  }
