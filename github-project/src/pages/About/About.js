@@ -3,26 +3,61 @@ import styles from './About.module.css';
 
 function About() {
     return (
-        <div className={styles.aboutContainer}>
-            <h2>About Us</h2>
-            <p> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ipsum eu nisl consectetur 
-                lacinia. Nam a tortor erat. Aenean posuere justo nisi, varius lobortis turpis blandit vel. Cras
-                 quis lectus blandit, semper mi sed, malesuada ligula. Sed maximus faucibus quam a commodo. 
-                 Proin eu odio quam. Nam suscipit urna et magna aliquam tincidunt.
-                Pellentesque a mauris magna. Ut fringilla nulla sit amet euismod mattis. Vestibulum vel accumsan 
-                lacus. Praesent quis odio ut purus varius pretium. Interdum et malesuada fames ac ante ipsum primis 
-                in faucibus. Integer tortor quam, aliquet in leo ac, placerat dignissim mi. Sed mollis enim vel 
-                nulla venenatis, sed mollis magna venenatis. Vivamus aliquet massa at mattis bibendum. Phasellus 
-                viverra euismod metus, ut malesuada diam rutrum in. Praesent a quam velit. Suspendisse velit sapien,
-                convallis pretium est non, varius ullamcorper leo. Mauris elementum ultrices ante, in ullamcorper 
-                odio. Vivamus nec magna in tellus dapibus laoreet. Ut magna tortor, interdum ac quam quis, ultricies
-                imperdiet arcu. Vivamus id vestibulum ligula, sit amet volutpat ex.
-                Etiam leo arcu, placerat sed rhoncus vitae, auctor at nunc. Fusce non venenatis augue. 
-                Nullam molestie ut libero vitae luctus. Nullam quis auctor purus. Proin ornare nulla eget magna
-                venenatis sodales. Etiam faucibus, metus ut dignissim pretium, justo velit euismod diam, non 
-                malesuada neque neque at ex. Proin sit amet enim in tellus bibendum luctus in dapibus purus.
-             </p>
+        <div className='about-container'>
+            <div className="about-content">
+                <h2>About GitHub Profile Viewer</h2>
+                <p>
+                    Welcome to the GitHub Profile Viewer! Our application is designed to provide users with a seamless 
+                    and intuitive way to explore GitHub profiles. Whether you're a developer, recruiter, or simply 
+                    curious about someone's contributions to the open-source community, the GitHub Profile Viewer 
+                    makes it easy to access and analyze key information about any GitHub user.
+                </p>
+                <h3>What is GitHub Profile Viewer?</h3>
+                <p>
+                    GitHub Profile Viewer is a web-based tool that allows users to search for and view detailed 
+                    information about GitHub profiles. By entering a GitHub username, you can quickly access 
+                    information such as:
+                </p>
+                <ul>
+                    <li>Public repositories and their details</li>
+                    <li>Contribution history and activity</li>
+                    <li>Followers and following statistics</li>
+                    <li>Languages used in repositories</li>
+                    <li>Profile bio and other public information</li>
+                </ul>
+                <h3>Why Use GitHub Profile Viewer?</h3>
+                <p>
+                    GitHub Profile Viewer is perfect for:
+                </p>
+                <ul>
+                    <li><strong>Developers:</strong> Quickly analyze your own or others' GitHub profiles to track progress and contributions.</li>
+                    <li><strong>Recruiters:</strong> Evaluate potential candidates by reviewing their open-source contributions and activity.</li>
+                    <li><strong>Open-Source Enthusiasts:</strong> Discover and explore the work of developers in the open-source community.</li>
+                </ul>
+                <h3>Features</h3>
+                <p>
+                    Our application is packed with features to make your experience as smooth as possible:
+                </p>
+                <ul>
+                    <li>Clean and user-friendly interface</li>
+                    <li>Dark mode for comfortable viewing</li>
+                    <li>Interactive graphs to visualize contributions</li>
+                    <li>Quick access to repository details</li>
+                    <li>Mobile-friendly design</li>
+                </ul>
+                <h3>Our Mission</h3>
+                <p>
+                    At GitHub Profile Viewer, our mission is to empower developers and recruiters by providing 
+                    a simple yet powerful tool to explore and analyze GitHub profiles. We believe in the power 
+                    of open-source and aim to make it easier for everyone to connect with the global developer 
+                    community.
+                </p>
+                <h3>Get Started</h3>
+                <p>
+                    Ready to explore GitHub profiles? Simply enter a username in the search bar and start discovering 
+                    the amazing work of developers around the world!
+                </p>
+            </div>
         </div>
     );
 }
