@@ -65,7 +65,6 @@ function Users() {
 
   return (
     <div>
-      {/* Main Content */}
       <main style={{ paddingBottom: '100px' }}>
         <h2>Random GitHub Users</h2>
 
@@ -82,7 +81,7 @@ function Users() {
 
         {error && <p className="error">{error}</p>}
 
-        {/* Display Random Users */}
+
         <div className={styles.userList}>
           {randomUsers.length > 0 ? (
             randomUsers.map((user) => (

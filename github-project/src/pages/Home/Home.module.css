@@ -53,6 +53,14 @@
     border-radius: 15px;
     cursor: pointer;
   }
+
+  .userList {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 1vw, 20px);
+    justify-content: center;
+  }
   
   .videoSection {
     width: 100%;
