@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ContributionsBarChart from '../components/ContributionsBarChart';
-import LanguagePieChart from '../components/LanguagePieChart';
-import { fetchContributions, aggregateContributionsByMonth } from '../githubService';
-import '../App.css';
-import UserCard from '../components/UserCard';
+import ContributionsBarChart from '../../components/ContributionsBarChart';
+import LanguagePieChart from '../../components/LanguagePieChart';
+import { fetchContributions, aggregateContributionsByMonth } from '../../githubService';
+import UserCard from '../../components/UserCard/UserCard';
+import styles from './Profile.module.css';
 
 function Profile() {
   const { username } = useParams();
@@ -81,26 +81,26 @@ function Profile() {
 
   return (
     <>
-      <div className="profile-container">
+      <div className={styles.profileContainer}>
         <div className="profile-title">
           <h2>Statistics</h2>
         </div>
-        <div className="profile-info">
+        <div className={styles.profileInfo}>
           <UserCard user={userInfo} variant="detailed" />
         </div>
 
-        <div className="statistic-dropdown">
+        <div className={styles.statisticDropdown}>
           <select value={selectedStatistic} onChange={(e) => setSelectedStatistic(e.target.value)}>
             <option value="Monthly Activity">Monthly Activity</option>
             <option value="Languages Used">Languages Used</option>
           </select>
         </div>
 
-        <div className='selected-statistic'>
+        <div className={styles.selectedStatistic}>
           <h3>Selected Statistic: {selectedStatistic}</h3>
 
           {selectedStatistic === "Monthly Activity" ? (
-            <div className="contribution-container">
+            <div className={styles.contributionContainer}>
               {contributionsData ? (
                 <ContributionsBarChart
                   data={contributionsData}
@@ -112,7 +112,7 @@ function Profile() {
               )}
             </div>
           ) : (
-            <div className="language-pie-chart">
+            <div className={styles.languagePieChart}>
               <h3>Languages Used</h3>
               {languageData.length > 0 ? (
                 <LanguagePieChart data={languageData} />

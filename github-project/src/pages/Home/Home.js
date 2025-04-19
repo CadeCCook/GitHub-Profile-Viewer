@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import '../App.css';
-import UserCard from '../components/UserCard';
+import UserCard from '../../components/UserCard/UserCard';
+import styles from './Home.module.css';
 
 function Home() {
   const [username, setUsername] = useState("");
@@ -30,31 +30,31 @@ function Home() {
   };
 
   return (
-    <div className='home-container'>
+    <div className={styles.homeContainer}>
       <main>
-        <div className='top-content'>
-          <p className="intro-text">
+        <div className={styles.topContent}>
+          <p className={styles.introText}>
             The easiest way to find and view user profiles and statistics. <br />
             Give it a try!
           </p>
-          <div className="search-container">
+          <div className={styles.searchContainer}>
             <input
               type="text"
-              className="search-input"
+              className={styles.searchInput}
               placeholder="Search for a user..."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && fetchGitHubUsers()}
             />
-            <button className="search-btn" onClick={fetchGitHubUsers}>Search</button>
+            <button className={styles.searchBtn} onClick={fetchGitHubUsers}>Search</button>
           </div>
 
           {error && <p className="error">{error}</p>}
         </div>
 
-        <div className='middle-content'>
+        <div className={styles.middleContent}>
           {userData.length > 0 && (
-            <div className="user-list">
+            <div className={styles.userList}>
               {userData.map((user) => (
                 <UserCard 
                   key={user.id}
@@ -66,9 +66,9 @@ function Home() {
           )}
         </div>
 
-        <div className='bottom-content'>
-          <section className="video-section">
-            <video className="background-video" autoPlay loop muted>
+        <div className={styles.bottomContent}>
+          <section className={styles.videoSection}>
+            <video className={styles.backgroundVideo} autoPlay loop muted>
               <source src="GitHunt_video.mp4" type="video/mp4"/>
             </video>
           </section>

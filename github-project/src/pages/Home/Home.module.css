@@ -1,0 +1,79 @@
+video {
+  width: 50vw;
+  height: auto;
+  min-width: 100px;
+  max-width: 800px;
+}
+
+.topContent {
+    margin-top: 0;
+    padding: 5vh 0;
+    background-color: var(--lime);
+  }
+
+  :global(body.dark-mode) {
+    .topContent {
+        background-color: #536C53;
+    }
+  }
+    
+  :global(body.dark-mode) {
+    .searchInput {
+        background-color: var(--gray);
+        color: var(--white);
+        border-color: var(--green-darkest);
+    }
+  }
+  
+  main .introText {
+    margin-bottom: 5vh;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+  
+  .searchContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    
+  }
+  
+  .searchInput {
+    font-size: 1em;
+    border: 2px solid var(--green-dark-80);
+    background-color: var(--white);
+    border-radius: 25px;
+    width: 50vw;
+    max-width: 800px;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .searchBtn {
+    padding: 10px 28px;
+    font-size: 1em;
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+
+  .userList {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 1vw, 20px);
+    justify-content: center;
+  }
+  
+  .videoSection {
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

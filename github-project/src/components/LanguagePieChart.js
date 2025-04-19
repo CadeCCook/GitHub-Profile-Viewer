@@ -17,27 +17,30 @@ const LanguagePieChart = ({ data }) => {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height={500}>
-      <PieChart className='pie-container'>
-        <Pie
-          data={data}
-          dataKey="value"
-          nameKey="language"
-          cx="50%"
-          cy="50%"
-          outerRadius={120} 
-          fill="#8884d8"
-          label
-          labelLine={false}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend className='pie-legend'/>
-      </PieChart>
-    </ResponsiveContainer>
+    <div className='chart-wrapper'>
+      <ResponsiveContainer height={500}>
+        <PieChart className='pie-container'>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="language"
+            cx="50%"
+            cy="50%"
+            outerRadius={120} 
+            fill="#8884d8"
+            label
+            labelLine={false}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend className='pie-legend'/>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+    
   );
 };
 

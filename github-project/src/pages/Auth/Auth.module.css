@@ -1,0 +1,12 @@
+.checkboxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .accountRedirect {
+    text-align: center;
+    margin-top: 20px;
+    align-self: center;
+  }
