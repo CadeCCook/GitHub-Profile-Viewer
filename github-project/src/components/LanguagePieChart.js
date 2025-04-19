@@ -18,7 +18,7 @@ const LanguagePieChart = ({ data }) => {
 
   return (
     <div className='chart-wrapper'>
-      <ResponsiveContainer height={500}>
+      <ResponsiveContainer>
         <PieChart className='pie-container'>
           <Pie
             data={data}

@@ -106,8 +106,8 @@
   .chartContainer text {
     fill: white !important;
   }
-  
-  .languagePieChart {
+
+  :global(.languagePieChart) {
     margin: auto auto;
     text-align: center;
     width: 100%;
@@ -162,4 +162,3 @@
     color: var(--green) !important;
     font-weight: 900;
   }
-  
