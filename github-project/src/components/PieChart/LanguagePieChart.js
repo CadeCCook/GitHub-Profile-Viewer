@@ -1,5 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from 'recharts';
+import styles from './PieChart.module.css';
 
 const LanguagePieChart = ({ data }) => {
   console.log('Data received in Pie Chart:', data);
@@ -17,9 +18,9 @@ const LanguagePieChart = ({ data }) => {
   ];
 
   return (
-    <div className='chart-wrapper'>
+    <div className={styles.chartWrapper}>
       <ResponsiveContainer>
-        <PieChart className='pie-container'>
+        <PieChart className={styles.pieContainer}>
           <Pie
             data={data}
             dataKey="value"
@@ -36,7 +37,7 @@ const LanguagePieChart = ({ data }) => {
             ))}
           </Pie>
           <Tooltip />
-          <Legend className='pie-legend'/>
+          <Legend className={styles.pieLegend}/>
         </PieChart>
       </ResponsiveContainer>
     </div>

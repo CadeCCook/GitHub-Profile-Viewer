@@ -86,8 +86,7 @@ form {
   justify-self: center;
   gap: 5px;
   border-radius: 10px;
-  width: 50vw;
-  max-width: 750px;
+  width: clamp(750px, 50vw, 1500px);
   color: var(--green);
 }
 
@@ -176,6 +175,5 @@ main {
 }
 
 .error {
-
   margin-top: 10px;
 }

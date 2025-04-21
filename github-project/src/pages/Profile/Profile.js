@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ContributionsBarChart from '../../components/ContributionsBarChart';
-import LanguagePieChart from '../../components/LanguagePieChart';
+import ContributionsBarChart from '../../components/BarChart/ContributionsBarChart';
+import LanguagePieChart from '../../components/PieChart/LanguagePieChart';
 import { fetchContributions, aggregateContributionsByMonth } from '../../githubService';
 import UserCard from '../../components/UserCard/UserCard';
 import styles from './Profile.module.css';
@@ -82,7 +82,7 @@ function Profile() {
   return (
     <>
       <div className={styles.profileContainer}>
-        <div className="profile-title">
+        <div className={styles.profileTitle}>
           <h2>Statistics</h2>
         </div>
         <div className={styles.profileInfo}>

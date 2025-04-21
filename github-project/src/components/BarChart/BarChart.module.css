@@ -1,0 +1,30 @@
+/* BarChart.module.css */
+
+:global(.recharts-cartesian-axis-line),
+:global(.recharts-cartesian-tick-line),
+:global(.recharts-cartesian-grid line) {
+stroke: var(--green);
+}
+
+:global(.recharts-cartesian-axis-tick text) {
+    fill: var(--green);
+}
+
+:global(body.dark-mode) { /* bug- dashes are not white */
+    :global(.recharts-cartesian-axis-line),
+    :global(.recharts-cartesian-tick-line),
+    :global(.recharts-cartesian-grid-line) {
+        stroke: var(--white);
+    }
+}
+
+:global(body.dark-mode) {
+    :global(.recharts-cartesian-axis-tick text) {
+        fill: var(--white);
+    }
+} 
+
+.chartWrapper {
+    max-width: clamp(500px, 80vw, 800px);
+    padding: 1rem;
+  }

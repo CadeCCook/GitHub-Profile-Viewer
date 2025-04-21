@@ -1,12 +1,19 @@
 .aboutContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 80vh;
-    background-color: inherit;
-  }
-  
-  .aboutContainer p {
-    margin: 0 5vw;
-    font-size: 1.2em;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  background-color: inherit;
+}
+
+.aboutContainer h3 {
+  margin: 0.5rem 5rem;
+}
+
+.aboutContainer p {
+  padding: 0 4rem;
+  font-size: 1.2em;
+}
+.aboutContainer ul {
+  padding: 0 7rem;
+}

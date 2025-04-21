@@ -3,8 +3,8 @@ import styles from './About.module.css';
 
 function About() {
     return (
-        <div className='about-container'>
-            <div className="about-content">
+        <div className={styles.aboutContainer}>
+            <div className={styles.aboutContent}>
                 <h2>About GitHub Profile Viewer</h2>
                 <p>
                     Welcome to the GitHub Profile Viewer! Our application is designed to provide users with a seamless 

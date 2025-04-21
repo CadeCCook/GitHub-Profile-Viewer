@@ -21,10 +21,17 @@
     background-color: var(--lime);
     padding: 30px;
     border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
+    width: clamp(500px, 80vw, 800px);
     color: var(--green);
     margin: auto; 
+    text-align: left;
+  }
+
+  :global(body.dark-mode) {
+    .contactForm {
+        background-color: var(--green-dark);
+        color: var(--white);
+    }
   }
   
   .contactPage main {
@@ -44,6 +51,7 @@
   .contactForm input,
   .contactForm textarea {
     font-size: 1em;
+    width: 100%;
     border: 2px solid var(--green);
     border-radius: 5px;
     background-color: var(--white);
@@ -55,7 +63,7 @@
     .contactForm textarea {
         background-color: var(--green-dark);
         color: var(--white);
-        border-color: var(--green-darkest-80);
+        border-color: var(--white-50);
     }
   } 
   

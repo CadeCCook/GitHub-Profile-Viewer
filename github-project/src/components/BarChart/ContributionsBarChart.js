@@ -1,12 +1,13 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import styles from './BarChart.module.css';
 
 function ContributionsBarChart({ data, selectedYear, onYearChange }) {
   const lastFourYears = Array.from({ length: 4 }, (_, i) => new Date().getFullYear() - i);
 
   return (
-    <div className="contributions-chart">
-      <div className="year-selector">
+    <div className={styles.contributionsChart}>
+      <div className={styles.yearSelector}>
         <label>Select Year: </label>
         <select value={selectedYear} onChange={(e) => onYearChange(e.target.value)}>
           {lastFourYears.map((year) => (
@@ -15,7 +16,7 @@ function ContributionsBarChart({ data, selectedYear, onYearChange }) {
         </select>
       </div>
 
-      <div className="chart-wrapper">
+      <div className={styles.chartWrapper}>
         <ResponsiveContainer height={300}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />

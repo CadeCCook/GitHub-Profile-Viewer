@@ -1,3 +1,4 @@
+/* profile.module.css */
 
 .container {
     min-height: 100vh;
@@ -47,10 +48,6 @@
   
   .yearSelector {
     padding-bottom: 3rem;
-  }
-  
-  .chartWrapper {
-    width: 90%;
   }
   
   .statisticDropdown select {
@@ -107,46 +104,8 @@
     fill: white !important;
   }
 
-  :global(.languagePieChart) {
-    margin: auto auto;
-    text-align: center;
-    width: 100%;
-    height: auto;
-    max-width: 600px;
-    padding: 1vh 20px;
-    overflow: auto;
-    justify-items: center;
-  }
-  
-  .pieContainer {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .recharts-cartesian-axis-line,
-  .recharts-cartesian-tick-line,
-  .recharts-cartesian-grid line {
-    stroke: var(--green);
-  }
-  
-  .recharts-cartesian-axis-tick text {
-    fill: var(--green);
-  }
-  
-  :global(body.dark-mode) {
-    .recharts-cartesian-axis-line,
-    .recharts-cartesian-tick-line,
-    .recharts-cartesian-grid line {
-        stroke: var(--white);
-    }
-  }
 
-  :global(body.dark-mode) {
-    .recharts-cartesian-axis-tick text {
-        fill: var(--white);
-      }
-  } 
-  
+  /* old styles- not sure where they applied */
   .recharts-legend-wrapper {
     padding: 2rem;
     background-color: var(--lime);
