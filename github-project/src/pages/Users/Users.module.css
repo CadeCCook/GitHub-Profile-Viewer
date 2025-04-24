@@ -60,3 +60,13 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+  .usersPage {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+    padding-bottom: 10rem;
+    background-color: inherit;
+  }
+  

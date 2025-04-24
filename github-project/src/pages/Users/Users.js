@@ -64,8 +64,8 @@ function Users() {
   }, [userCount]);
 
   return (
-    <div>
-      <main style={{ paddingBottom: '100px' }}>
+      <div className={styles.usersPage}>
+        <main>
         <h2>Random GitHub Users</h2>
 
         <button className={styles.generateBtn} onClick={generateRandomUsers}>Generate New Users</button>
