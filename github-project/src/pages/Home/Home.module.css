@@ -1,3 +1,8 @@
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 video {
   width: 50vw;
   height: auto;
@@ -37,7 +42,6 @@ video {
     gap: 10px;
     align-items: center;
     padding: 10px;
-    
   }
   
   .searchInput {
